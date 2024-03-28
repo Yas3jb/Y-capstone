@@ -10,6 +10,16 @@ export const fetchProducts = async () => {
     const response = await axios.get(`${URL}/products`);
     return response.data;
   } catch (err) {
-    console.log(err.message);
+    console.error(err);
+  }
+};
+
+// Fetch Single Product
+export const fetchSingleProduct = async (id) => {
+  try {
+    const response = await axios.get(`${URL}/products/${id}`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
   }
 };
