@@ -44,7 +44,42 @@ export const createUser = async (credentials) => {
     } else {
       console.error(response.data);
     }
-  } catch (error) {
-    console.error("Error:", error);
+  } catch (err) {
+    console.error("Error:", err);
+  }
+};
+
+// Fetch user
+export const fetchUser = async (credentials) => {
+  try {
+    const response = await axios.post(`${Base_URL}/auth/login`, credentials, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.status === 200) {
+      const { token } = response.data;
+      window.localStorage.setItem("token", token);
+      Authenticate();
+    }
+  } catch (err) {
+    console.error("Error:", err);
+  }
+};
+
+// Authenticate
+export const Authenticate = async () => {
+  const token = window.localStorage.getItem("token");
+  if (token) {
+    try {
+      const response = await axios.get(`${Base_URL}/auth/me`, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      setAuth(response.data);
+    } catch (err) {
+      window.localStorage.removeItem("token");
+    }
   }
 };
