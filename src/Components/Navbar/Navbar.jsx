@@ -14,6 +14,9 @@ export default function Navbar() {
           <li>
             <Link to="/login">LOGIN</Link>{" "}
           </li>
+          <li>
+            <Link to="/products/category/jewelery">jewelery</Link>
+          </li>
         </ul>
       </nav>
     </>
