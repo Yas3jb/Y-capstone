@@ -72,14 +72,24 @@ export const Authenticate = async () => {
   const token = window.localStorage.getItem("token");
   if (token) {
     try {
-      const response = await axios.get(`${Base_URL}/auth/me`, {
+      await axios.get(`${Base_URL}/auth/me`, {
         headers: {
           Authorization: token,
         },
       });
-      setAuth(response.data);
     } catch (err) {
       window.localStorage.removeItem("token");
     }
+  }
+};
+
+// fetch Jewelery
+export const fetchJewelery = async () => {
+  try {
+    const response = await axios.get(`${URL}/products/category/jewelery`);
+    console.log(response);
+    return response.data;
+  } catch (err) {
+    console.error(err);
   }
 };
