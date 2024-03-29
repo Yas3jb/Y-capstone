@@ -10,7 +10,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Function to handle form submission
+  // Function to handle register submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Creating user with input data
