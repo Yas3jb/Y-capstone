@@ -17,6 +17,9 @@ export default function Navbar() {
           <li>
             <Link to="/products/category/jewelery">jewelery</Link>
           </li>
+          <li>
+            <Link to="/products/category/electronics">electronics</Link>
+          </li>
         </ul>
       </nav>
     </>

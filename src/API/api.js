@@ -93,3 +93,14 @@ export const fetchJewelery = async () => {
     console.error(err);
   }
 };
+
+// fetch Electronics
+export const fetchElectronics = async () => {
+  try {
+    const response = await axios.get(`${URL}/products/category/electronics`);
+    console.log(response);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+};

@@ -6,6 +6,7 @@ import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
 import Navbar from "./Components/Navbar/Navbar";
 import Jewelery from "./Components/Jewelery/Jewelery";
+import Electronics from "./Components/Electronics/Electronics";
 
 function App() {
   // Render Components
@@ -18,6 +19,10 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products/category/jewelery" element={<Jewelery />} />
+        <Route
+          path="/products/category/electronics"
+          element={<Electronics />}
+        />
       </Routes>
     </>
   );
