@@ -7,6 +7,7 @@ import Login from "./Components/Login/Login";
 import Navbar from "./Components/Navbar/Navbar";
 import Jewelery from "./Components/Jewelery/Jewelery";
 import Electronics from "./Components/Electronics/Electronics";
+import Men from "./Components/Men/Men";
 
 function App() {
   // Render Components
@@ -23,6 +24,7 @@ function App() {
           path="/products/category/electronics"
           element={<Electronics />}
         />
+        <Route path="/products/category/mens%20clothing" element={<Men />} />
       </Routes>
     </>
   );
