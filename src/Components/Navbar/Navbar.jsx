@@ -6,19 +6,22 @@ export default function Navbar() {
       <nav>
         <ul>
           <li>
-            <Link to="/">SHOP</Link>{" "}
+            <Link to="/">Shop</Link>{" "}
           </li>
           <li>
-            <Link to="/register">REGISTER</Link>{" "}
+            <Link to="/register">Register</Link>{" "}
           </li>
           <li>
-            <Link to="/login">LOGIN</Link>{" "}
+            <Link to="/login">Login</Link>{" "}
           </li>
           <li>
-            <Link to="/products/category/jewelery">jewelery</Link>
+            <Link to="/products/category/jewelery">Jewelery</Link>
           </li>
           <li>
-            <Link to="/products/category/electronics">electronics</Link>
+            <Link to="/products/category/electronics">Electronics</Link>
+          </li>
+          <li>
+            <Link to="/products/category/mens%20clothing">Men</Link>
           </li>
         </ul>
       </nav>
