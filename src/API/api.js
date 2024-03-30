@@ -117,3 +117,14 @@ export const fetchMen = async () => {
     console.error(err);
   }
 };
+
+// fetch cart
+export const fetchCart = async () => {
+  try {
+    const response = await axios.get(`${URL}/cart`);
+    console.log(response);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
