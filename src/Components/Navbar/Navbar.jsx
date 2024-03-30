@@ -35,6 +35,9 @@ export default function Navbar({ token, setToken }) {
           ) : (
             <Link to="/login"> Login </Link>
           )}
+          <li>
+            <Link to="/cart">Cart</Link>
+          </li>
         </ul>
       </nav>
     </>
