@@ -43,6 +43,9 @@ export default function Login() {
         />
         <button disabled={!email || !password}>Login</button>
       </form>
+      <p>
+        If you don't have an account, <a href="/register">create one</a>.
+      </p>
     </div>
   );
 }

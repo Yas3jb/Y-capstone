@@ -1,4 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
+import "./Navbar.css"; // Importing external CSS file
+import logo from "../Image/logo.png";
+import { IoCartOutline } from "react-icons/io5";
 
 export default function Navbar({ token, setToken }) {
   // Hook for navigation
@@ -13,33 +16,39 @@ export default function Navbar({ token, setToken }) {
     // Redirect to the login page
     navigate("/login");
   };
+
   return (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Shop</Link>{" "}
-          </li>
-          <li>
-            <Link to="/products/category/jewelery">Jewelery</Link>
-          </li>
-          <li>
-            <Link to="/products/category/electronics">Electronics</Link>
-          </li>
-          <li>
-            <Link to="/products/category/mens%20clothing">Men</Link>
-          </li>
-          {token ? "" : <Link to="/register"> Register </Link>}
-          {token ? (
-            <Link onClick={handleLogout}>Logout</Link>
-          ) : (
+    <div className="navbar">
+      <div className="nav-logo">
+        <img src={logo} alt="" />
+      </div>
+      <ul className="nav-menu">
+        <li>
+          <Link to="/">All</Link>{" "}
+        </li>
+        <li>
+          <Link to="/products/category/jewelery">Jewelery</Link>
+        </li>
+        <li>
+          <Link to="/products/category/electronics">Electronics</Link>
+        </li>
+        <li>
+          <Link to="/products/category/mens%20clothing">Men</Link>
+        </li>
+      </ul>
+      <div className="nav-login-cart">
+        {token ? (
+          <button onClick={handleLogout}>Logout</button>
+        ) : (
+          <button>
             <Link to="/login"> Login </Link>
-          )}
-          <li>
-            <Link to="/cart">Cart</Link>
-          </li>
-        </ul>
-      </nav>
-    </>
+          </button>
+        )}
+        <Link to="/cart">
+          <IoCartOutline />
+        </Link>
+        <div className="nav-cart-count">0</div>
+      </div>
+    </div>
   );
 }

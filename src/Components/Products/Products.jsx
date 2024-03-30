@@ -6,6 +6,7 @@ import { fetchProducts } from "../../API/api.js";
 import { CartContext } from "../Context/CartContextProvider.jsx";
 // Import useNavigate
 import { useNavigate } from "react-router-dom";
+import "./Products.css";
 
 export default function Products() {
   // State variable to store the products
@@ -29,19 +30,28 @@ export default function Products() {
   }, []);
 
   return (
-    <>
+    <div className="products-container">
       {products.map((product) => (
-        <div key={product.id}>
-          <img src={product.image} alt="Product Image" />
-          <h2>{product.title}</h2>
-          <p>{product.description}</p>
-          <h4>{product.price}</h4>
-          <button onClick={() => addToCart(product)}>Add</button>
-          <button onClick={() => navigate(`/products/${product.id}`)}>
+        <section key={product.id} className="product-card">
+          <img
+            className="product-image"
+            src={product.image}
+            alt={product.title}
+          />
+          <h3 className="product-title">{product.title}</h3>
+          <p className="product-desc"> {product.description}</p>
+          <h4 className="product-price"> ${product.price}</h4>
+          <button onClick={() => addToCart(product)} className="add-button">
+            Add
+          </button>
+          <button
+            onClick={() => navigate(`/products/${product.id}`)}
+            className="view-button"
+          >
             View
           </button>
-        </div>
+        </section>
       ))}
-    </>
+    </div>
   );
 }
