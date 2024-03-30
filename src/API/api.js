@@ -37,15 +37,20 @@ export const createUser = async (credentials) => {
         },
       }
     );
-    if (response.status === 200) {
-      const { token } = response.data;
-      window.localStorage.setItem("token", token);
-      console.log(response.data);
+
+    const { token } = response.data;
+    window.localStorage.setItem("token", token);
+    console.log("User created successfully:", response.data);
+  } catch (error) {
+    if (error.response) {
+      // Server responded with an error
+      console.error("Server error:", error.response.data);
+      throw new Error("User already exists. Please login.");
     } else {
-      console.error(response.data);
+      // Something else happened (e.g., request setup error)
+      console.error("Error:", error.message);
+      throw new Error("Error occurred. Please try again.");
     }
-  } catch (err) {
-    console.error("Error:", err);
   }
 };
 
