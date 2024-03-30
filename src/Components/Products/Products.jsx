@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react";
+// Import useState, useEffect, and useContext
+import { useState, useEffect, useContext } from "react";
 // Import fetchProducts function
 import { fetchProducts } from "../../API/api.js";
+// Import CartContext from CartContextProvider
+import { CartContext } from "../Context/CartContextProvider.jsx";
 // Import useNavigate
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +12,8 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   // Hook for navigation
   const navigate = useNavigate();
+  // Destructuring addToCart function from CartContext
+  const { addToCart } = useContext(CartContext);
 
   // Effect hook to fetch products
   useEffect(() => {
@@ -31,7 +36,7 @@ export default function Products() {
           <h2>{product.title}</h2>
           <p>{product.description}</p>
           <h4>{product.price}</h4>
-          <button>Add</button>
+          <button onClick={() => addToCart(product)}>Add</button>
           <button onClick={() => navigate(`/products/${product.id}`)}>
             View
           </button>
