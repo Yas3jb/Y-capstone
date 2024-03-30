@@ -29,6 +29,13 @@ export default function Products() {
       });
   }, []);
 
+  // Function to truncate the description to 100 characters
+  const truncateDescription = (description) => {
+    return description.length > 50
+      ? description.substring(0, 50) + "..."
+      : description;
+  };
+
   return (
     <div className="products-container">
       {products.map((product) => (
@@ -39,7 +46,9 @@ export default function Products() {
             alt={product.title}
           />
           <h3 className="product-title">{product.title}</h3>
-          <p className="product-desc"> {product.description}</p>
+          <p className="product-desc">
+            {truncateDescription(product.description)}
+          </p>{" "}
           <h4 className="product-price"> ${product.price}</h4>
           <button onClick={() => addToCart(product)} className="add-button">
             Add

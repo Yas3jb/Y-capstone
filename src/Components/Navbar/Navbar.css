@@ -36,8 +36,7 @@
   gap: 45px;
 }
 
-.nav-login-cart button,
-Link {
+.nav-login-cart button {
   width: 157px;
   height: 58;
   outline: none;
@@ -48,6 +47,7 @@ Link {
   font-weight: 500;
   background: white;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .nav-login-cart button:active {
@@ -70,4 +70,9 @@ Link {
 
 a {
   text-decoration: none;
+  color: #515151;
+}
+
+a:hover {
+  border-bottom: 1px solid red;
 }

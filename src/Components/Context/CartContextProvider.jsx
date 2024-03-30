@@ -11,6 +11,7 @@ export const CartContextProvider = (props) => {
   // State variables to store cart items and cart
   const [cart, setCart] = useState([]);
   const [cartItems, setCartItems] = useState({});
+  const [cartCount, setCartCount] = useState(0);
 
   // Effect hook to fetch initial cart data
   useEffect(() => {
@@ -29,6 +30,8 @@ export const CartContextProvider = (props) => {
   // Effect hook to store cart data in local storage
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    // Update cart count whenever cartItems change
+    setCartCount(Object.values(cartItems).reduce((acc, curr) => acc + curr, 0));
   }, [cartItems]);
 
   // Function to add item to cart
@@ -63,6 +66,14 @@ export const CartContextProvider = (props) => {
     setCart([]);
   };
 
+  // Function to Update Quantity from inside the cart
+  const updateQuantity = (product, newQuantity) => {
+    setCartItems((prev) => ({
+      ...prev,
+      [product.id]: newQuantity >= 0 ? newQuantity : 0,
+    }));
+  };
+
   // Context value containing cart state and related functions
   const contextValue = {
     cart,
@@ -71,6 +82,8 @@ export const CartContextProvider = (props) => {
     removeFromCart,
     getTotalCost,
     resetCart,
+    cartCount,
+    updateQuantity,
   };
 
   // Providing context value to children components

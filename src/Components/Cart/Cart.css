@@ -1,0 +1,75 @@
+/* Cart.css */
+
+.cart-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Add position: relative to the container */
+}
+
+.cart-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.cart-item button {
+  padding: 8px 16px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item button:hover {
+  background-color: #ff483a;
+}
+
+.cart-item img {
+  max-width: 100px;
+  margin-right: 20px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cart-item-price {
+  margin-top: 5px;
+  color: #666;
+}
+
+.cart-item-quantity {
+  margin-top: 5px;
+}
+
+.cart-total {
+  margin-top: auto; /* Pushes the total to the bottom of the container */
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute; /* Position the total element */
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+}
+
+.cart-no-items {
+  font-size: 24px;
+  text-align: center;
+}

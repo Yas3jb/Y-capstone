@@ -1,11 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css"; // Importing external CSS file
+import "./Navbar.css";
 import logo from "../Image/logo.png";
 import { IoCartOutline } from "react-icons/io5";
+import { useContext } from "react";
+import { CartContext } from "../Context/CartContextProvider";
 
 export default function Navbar({ token, setToken }) {
   // Hook for navigation
   const navigate = useNavigate();
+  const { cartCount } = useContext(CartContext);
 
   // Function to handle logout
   const handleLogout = (e) => {
@@ -47,7 +50,7 @@ export default function Navbar({ token, setToken }) {
         <Link to="/cart">
           <IoCartOutline />
         </Link>
-        <div className="nav-cart-count">0</div>
+        <div className="nav-cart-count">{cartCount}</div>
       </div>
     </div>
   );
