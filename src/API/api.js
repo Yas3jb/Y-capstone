@@ -62,8 +62,10 @@ export const fetchUser = async (credentials) => {
       window.localStorage.setItem("token", token);
       Authenticate();
     }
+    return response;
   } catch (err) {
     console.error("Error:", err);
+    throw err;
   }
 };
 
