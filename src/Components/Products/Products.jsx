@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // Import useState, useEffect, and useContext
 import { useState, useEffect, useContext } from "react";
 // Import fetchProducts function
@@ -8,7 +9,7 @@ import { CartContext } from "../Context/CartContextProvider.jsx";
 import { useNavigate } from "react-router-dom";
 import "./Products.css";
 
-export default function Products() {
+export default function Products({ category }) {
   // State variable to store the products
   const [products, setProducts] = useState([]);
   // Hook for navigation
@@ -36,9 +37,16 @@ export default function Products() {
       : description;
   };
 
+  // Function to filter products based on category
+  const filterProducts = (product) => {
+    if (category) {
+      return product.category === category;
+    }
+    return true;
+  };
   return (
     <div className="products-container">
-      {products.map((product) => (
+      {products.filter(filterProducts).map((product) => (
         <section key={product.id} className="product-card">
           <img
             className="product-image"

@@ -83,34 +83,10 @@ export const Authenticate = async () => {
   }
 };
 
-// fetch Jewelery
-export const fetchJewelery = async () => {
+// fetch Categories
+export const fetchCategories = async () => {
   try {
-    const response = await axios.get(`${URL}/products/category/jewelery`);
-    console.log(response);
-    return response.data;
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-// fetch Electronics
-export const fetchElectronics = async () => {
-  try {
-    const response = await axios.get(`${URL}/products/category/electronics`);
-    console.log(response);
-    return response.data;
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-// fetch Men
-export const fetchMen = async () => {
-  try {
-    const response = await axios.get(
-      `${URL}/products/category/men's%20clothing`
-    );
+    const response = await axios.get(`${URL}/products/categories`);
     console.log(response);
     return response.data;
   } catch (err) {
