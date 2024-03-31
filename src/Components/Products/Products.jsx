@@ -8,6 +8,9 @@ import { CartContext } from "../Context/CartContextProvider.jsx";
 // Import useNavigate
 import { useNavigate } from "react-router-dom";
 import "./Products.css";
+// Import React Icon
+import { FaEye } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 
 export default function Products({ category }) {
   // State variable to store the products
@@ -59,13 +62,13 @@ export default function Products({ category }) {
           </p>{" "}
           <h4 className="product-price"> ${product.price}</h4>
           <button onClick={() => addToCart(product)} className="add-button">
-            Add
+            <FaPlus />
           </button>
           <button
             onClick={() => navigate(`/products/${product.id}`)}
             className="view-button"
           >
-            View
+            <FaEye />
           </button>
         </section>
       ))}

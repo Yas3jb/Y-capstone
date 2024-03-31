@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../Image/logo.png";
 import { IoCartOutline } from "react-icons/io5";
+import { MdOutlineAccountCircle } from "react-icons/md";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContextProvider";
 import { useState, useEffect } from "react";
@@ -37,35 +38,37 @@ export default function Navbar({ token, setToken, setCategory }) {
   };
 
   return (
-    <div className="navbar">
-      <div className="nav-logo">
-        <img src={logo} alt="" />
-      </div>
-      <ul className="nav-menu">
-        <li>
-          <Link to="/">All</Link>{" "}
-        </li>
-        {/* Display categories */}
-        {categories.map((category, i) => (
-          <li key={i}>
-            {/* Use Link for navigation to category */}
-            <Link
-              onClick={() => setCategory(category)}
-              to={`/products?category=${category}`}
-            >
-              {category}
-            </Link>
+    <header>
+      <img className="logo" src={logo} alt="Image not found" />
+      <nav>
+        <ul className="nav-links">
+          <li>
+            <Link to="/">All</Link>{" "}
           </li>
-        ))}
-      </ul>
-      <div className="nav-login-cart">
+          {/* Display categories */}
+          {categories.map((category, i) => (
+            <li key={i}>
+              {/* Use Link for navigation to category */}
+              <Link
+                onClick={() => setCategory(category)}
+                to={`/products?category=${category}`}
+              >
+                {category}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div>
         {/* Conditional rendering based on token */}
         {token ? (
-          <button onClick={handleLogout}>Logout</button>
-        ) : (
-          <button>
-            <Link to="/login"> Login </Link>
+          <button className="btn" onClick={handleLogout}>
+            Logout
           </button>
+        ) : (
+          <Link to="/login">
+            <MdOutlineAccountCircle />
+          </Link>
         )}
         <Link to="/cart">
           <IoCartOutline />
@@ -73,6 +76,6 @@ export default function Navbar({ token, setToken, setCategory }) {
         {/* Display cart count */}
         <div className="nav-cart-count">{cartCount}</div>
       </div>
-    </div>
+    </header>
   );
 }
