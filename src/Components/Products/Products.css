@@ -1,5 +1,52 @@
 /* Products.css */
 
+section {
+  padding: 200px 14%;
+}
+
+.banner {
+  min-height: 100%;
+  width: 100%;
+  background: url(../Image/banner.webp);
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  align-items: center;
+}
+
+.banner-text,
+h1,
+span,
+p {
+  background-color: transparent;
+}
+
+.banner-text h1 {
+  font-size: 48px;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.2;
+  letter-spacing: 10px;
+  margin-bottom: 23px;
+}
+
+.banner-text span {
+  font-size: 40px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.banner-text p {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 48px;
+  letter-spacing: 3px;
+}
+
+/* =======================================*/
+
 .products-container {
   display: flex;
   flex-direction: column;

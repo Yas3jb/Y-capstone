@@ -47,31 +47,42 @@ export default function Products({ category }) {
     }
     return true;
   };
+
   return (
-    <div className="products-container">
-      {products.filter(filterProducts).map((product) => (
-        <section key={product.id} className="product-card">
-          <img
-            className="product-image"
-            src={product.image}
-            alt={product.title}
-          />
-          <h3 className="product-title">{product.title}</h3>
-          <p className="product-desc">
-            {truncateDescription(product.description)}
-          </p>{" "}
-          <h4 className="product-price"> ${product.price}</h4>
-          <button onClick={() => addToCart(product)} className="add-button">
-            <FaPlus />
-          </button>
-          <button
-            onClick={() => navigate(`/products/${product.id}`)}
-            className="view-button"
-          >
-            <FaEye />
-          </button>
-        </section>
-      ))}
-    </div>
+    <>
+      <section className="banner">
+        <div className="banner-text">
+          <h1>
+            Women's New <br /> <span>Arraivals</span>
+          </h1>
+          <p>New colors now available</p>
+        </div>
+      </section>
+      <div className="products-container">
+        {products.filter(filterProducts).map((product) => (
+          <div key={product.id} className="product-card">
+            <img
+              className="product-image"
+              src={product.image}
+              alt={product.title}
+            />
+            <h3 className="product-title">{product.title}</h3>
+            <p className="product-desc">
+              {truncateDescription(product.description)}
+            </p>{" "}
+            <h4 className="product-price"> ${product.price}</h4>
+            <button onClick={() => addToCart(product)} className="add-button">
+              <FaPlus />
+            </button>
+            <button
+              onClick={() => navigate(`/products/${product.id}`)}
+              className="view-button"
+            >
+              <FaEye />
+            </button>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
