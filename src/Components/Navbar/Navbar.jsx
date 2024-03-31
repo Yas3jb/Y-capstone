@@ -40,9 +40,9 @@ export default function Navbar({ token, setToken, setCategory }) {
   return (
     <header>
       <img className="logo" src={logo} alt="Image not found" />
-      <nav>
+      <div>
         <ul className="nav-links">
-          <li>
+          <li className="test">
             <Link to="/">All</Link>{" "}
           </li>
           {/* Display categories */}
@@ -53,12 +53,12 @@ export default function Navbar({ token, setToken, setCategory }) {
                 onClick={() => setCategory(category)}
                 to={`/products?category=${category}`}
               >
-                {category}
+                {category.toUpperCase()}
               </Link>
             </li>
           ))}
         </ul>
-      </nav>
+      </div>
       <div className="icons-container">
         {/* Conditional rendering based on token */}
         {token ? (
