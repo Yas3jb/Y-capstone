@@ -19,6 +19,7 @@ export default function Products({ category }) {
   const navigate = useNavigate();
   // Destructuring addToCart function from CartContext
   const { addToCart } = useContext(CartContext);
+  const [notification, setNotification] = useState("");
 
   // Effect hook to fetch products
   useEffect(() => {
@@ -48,40 +49,65 @@ export default function Products({ category }) {
     return true;
   };
 
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    const message = `${product.title} has been added to the cart!`;
+    setNotification(message); // Set notification message
+    // Clear notification after 3 seconds
+    setTimeout(() => {
+      setNotification();
+    }, 3000);
+  };
+
   return (
     <>
+      {notification && <p className="notification">{notification}</p>}
       <section className="banner">
         <div className="banner-text">
           <h1>
-            Women's New <br /> <span>Arraivals</span>
+            Discover Exciting <br /> <span>New Products</span>
           </h1>
-          <p>New colors now available</p>
+          <p>Explore our latest arrivals and find something special for you!</p>
         </div>
       </section>
-      <div className="products-container">
-        {products.filter(filterProducts).map((product) => (
-          <div key={product.id} className="product-card">
-            <img
-              className="product-image"
-              src={product.image}
-              alt={product.title}
-            />
-            <h3 className="product-title">{product.title}</h3>
-            <p className="product-desc">
-              {truncateDescription(product.description)}
-            </p>{" "}
-            <h4 className="product-price"> ${product.price}</h4>
-            <button onClick={() => addToCart(product)} className="add-button">
-              <FaPlus />
-            </button>
-            <button
-              onClick={() => navigate(`/products/${product.id}`)}
-              className="view-button"
-            >
-              <FaEye />
-            </button>
-          </div>
-        ))}
+      <div className="header-text">
+        <h2>View All Products</h2>
+      </div>
+      <div className="product-container">
+        <div className="product-list">
+          {products.filter(filterProducts).map((product) => (
+            <div key={product.id} className="product-card">
+              <img
+                className="product-image"
+                src={product.image}
+                alt="Not found"
+              />
+              <div className="product-content">
+                <h3 className="product-title">{product.title}</h3>
+                <p className="product-desc">
+                  {truncateDescription(product.description)}
+                </p>
+                <div className="product-price">
+                  <h4> $ {product.price}</h4>
+                </div>
+              </div>
+              <div className="btn-container">
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="add-button"
+                >
+                  <FaPlus />
+                </button>
+                <button
+                  onClick={() => navigate(`/products/${product.id}`)}
+                  className="view-button"
+                >
+                  <FaEye />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

@@ -43,7 +43,7 @@ export default function Navbar({ token, setToken, setCategory }) {
       <div>
         <ul className="nav-links">
           <li className="test">
-            <Link to="/">All</Link>{" "}
+            <Link to="/">ALL</Link>{" "}
           </li>
           {/* Display categories */}
           {categories.map((category, i) => (
