@@ -59,22 +59,27 @@ export default function Navbar({ token, setToken, setCategory }) {
           ))}
         </ul>
       </nav>
-      <div>
+      <div className="icons-container">
         {/* Conditional rendering based on token */}
         {token ? (
           <button className="btn" onClick={handleLogout}>
             Logout
           </button>
         ) : (
-          <Link to="/login">
-            <MdOutlineAccountCircle />
-          </Link>
+          <li>
+            <Link to="/login">
+              <MdOutlineAccountCircle />
+            </Link>
+          </li>
         )}
-        <Link to="/cart">
-          <IoCartOutline />
-        </Link>
+        <li>
+          <Link to="/cart">
+            <IoCartOutline />
+          </Link>
+        </li>
+
         {/* Display cart count */}
-        <div className="nav-cart-count">{cartCount}</div>
+        <li className="nav-cart-count">{cartCount}</li>
       </div>
     </header>
   );
