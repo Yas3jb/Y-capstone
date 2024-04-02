@@ -104,7 +104,7 @@ export const fetchCategories = async () => {
 // fetch cart
 export const fetchCart = async () => {
   try {
-    const response = await axios.get(`${URL}/cart`);
+    const response = await axios.get(`${Base_URL}/cart`);
     console.log(response);
     return response.data;
   } catch (err) {
