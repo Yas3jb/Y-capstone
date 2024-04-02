@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "./Products.css";
 import { FaEye } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import Banner from "../Banner/Banner.jsx";
 
 export default function Products({ category }) {
   // State variable
@@ -66,7 +67,7 @@ export default function Products({ category }) {
   const handleAddToCart = (product) => {
     addToCart(product);
     const message = `${product.title} has been added to the cart!`;
-    setNotification(message); // Set notification message
+    setNotification(message);
     // Clear notification after 3 seconds
     setTimeout(() => {
       setNotification();
@@ -76,14 +77,7 @@ export default function Products({ category }) {
   return (
     <>
       {notification && <p className="notification">{notification}</p>}
-      <section className="banner">
-        <div className="banner-text">
-          <h1>
-            Discover Exciting <br /> <span>New Products</span>
-          </h1>
-          <p>Explore our latest arrivals and find something special for you!</p>
-        </div>
-      </section>
+      <Banner />
       <div className="header-text">
         <h2>View All Products</h2>
       </div>
