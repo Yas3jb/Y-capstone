@@ -76,7 +76,7 @@ export default function Register() {
           className="input-field"
         />
         <button
-          className="btn"
+          className="register-btn"
           disabled={!firstName || !lastName || !email || !password}
         >
           Register

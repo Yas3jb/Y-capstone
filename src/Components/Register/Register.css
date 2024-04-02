@@ -29,7 +29,7 @@
   color: green;
 }
 
-.btn {
+.register-btn {
   margin: 10px auto;
   background-color: black;
   color: #fff;
@@ -39,15 +39,11 @@
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: #0056b3;
-}
-
 .text {
   text-align: center;
   margin: 20px;
 }
 
-a {
+.register-link {
   color: red;
 }
