@@ -83,10 +83,10 @@ export default function Products({ category }) {
       </div>
       <div className="sort-options">
         <label htmlFor="sort">Sort by:</label>
-        <select id="sort" value={sort} onChange={handleSortChange}>
+        <select value={sort} onChange={handleSortChange}>
           <option value="title">Title</option>
         </select>
-        <button onClick={handleOrderChange}>
+        <button className="sort" onClick={handleOrderChange}>
           {sortOrder === "asc" ? "Ascending" : "Descending"}
         </button>
       </div>

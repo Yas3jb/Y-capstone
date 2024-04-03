@@ -85,6 +85,11 @@
   transform: translateY(-30px);
 }
 
+/* sorting */
+.sort {
+  background: white;
+}
+
 /* notification */
 
 .notification {

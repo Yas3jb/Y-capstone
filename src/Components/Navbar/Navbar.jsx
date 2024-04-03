@@ -39,7 +39,8 @@ export default function Navbar({ token, setToken, setCategory }) {
 
   return (
     <header>
-      <img className="logo" src={logo} alt="Image not found" />
+      <h1 className="logo-name">E-Shop</h1>
+      {/* <img className="logo" src={logo} alt="Image not found" /> */}
       <div>
         <ul className="nav-links">
           <li className="test">
@@ -62,17 +63,17 @@ export default function Navbar({ token, setToken, setCategory }) {
       <div className="icons-container">
         {/* Conditional rendering based on token */}
         {token ? (
-          <button className="btn" onClick={handleLogout}>
+          <button className="logout-btn" onClick={handleLogout}>
             Logout
           </button>
         ) : (
-          <li>
+          <li className="nav-login">
             <Link to="/login">
               <MdOutlineAccountCircle />
             </Link>
           </li>
         )}
-        <li>
+        <li className="nav-register">
           <Link to="/cart">
             <IoCartOutline />
           </Link>

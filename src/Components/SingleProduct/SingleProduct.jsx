@@ -26,7 +26,7 @@ export default function SingleProduct() {
         <img src={product.image} alt="Product Image" />
         <h2>{product.title}</h2>
         <p>Description: {product.description}</p>
-        <h4>Price:: ${product.price}</h4>
+        <h4>Price: ${product.price}</h4>
         <h4>Rating: {product.rating && product.rating.rate}</h4>
       </div>
     </>

@@ -68,7 +68,7 @@ export default function Login() {
       </form>
       <p className="text">
         If you don't have an account,{" "}
-        <a className="register-link" href="/register">
+        <a className="login-link" href="/register">
           create one
         </a>
         .

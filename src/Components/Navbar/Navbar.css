@@ -1,25 +1,31 @@
 li,
 a,
 button {
+  background-color: black;
   font-weight: 400;
   font-style: normal;
   text-decoration: none;
   letter-spacing: 1px;
 }
 
+.logo-name {
+  color: white;
+}
+
 header {
+  background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 30px 10%;
 }
 
-.logo {
+/* .logo {
   cursor: pointer;
   width: 20%;
   height: 100px;
   margin-bottom: 10px;
-}
+} */
 
 .nav-links {
   display: flex;
@@ -29,13 +35,14 @@ header {
 .nav-links a {
   padding: 0 20px;
   font-size: 15px;
-  color: black;
+  color: white;
 }
 
-button {
+.logout-btn {
+  color: white;
   padding: 9px 20px;
   border: none;
-  border-radius: 50px;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -46,9 +53,10 @@ button {
 }
 
 .icons-container a {
-  font-size: 25px;
   color: black;
+  font-size: 25px;
   margin: 10px 20px;
+  background: transparent;
 }
 
 .nav-cart-count {
