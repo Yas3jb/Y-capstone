@@ -13,11 +13,14 @@ button {
 }
 
 header {
+  width: 100%;
   background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 30px 10%;
+  position: fixed;
+  z-index: 1000;
 }
 
 /* .logo {

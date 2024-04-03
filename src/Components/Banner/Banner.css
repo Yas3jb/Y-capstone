@@ -5,13 +5,18 @@ section {
 .banner {
   min-height: 100%;
   width: 100%;
-  background: url(../Image/banner.jpg);
+  background: linear-gradient(
+    24deg,
+    rgba(255, 132, 115, 1) 0%,
+    rgba(255, 249, 210, 1) 100%
+  );
   background-size: cover;
   background-position: center top;
   position: relative;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   align-items: center;
+  padding-top: 21%;
 }
 
 .banner-text,
