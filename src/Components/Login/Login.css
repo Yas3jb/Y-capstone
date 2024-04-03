@@ -1,20 +1,15 @@
 .login-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 100vh;
-  height: 50vh;
-  margin: auto;
+  display: inline-block;
+  width: 50%;
+  margin: 10% 23%;
   padding: 50px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
 }
 
-.input-field {
-  width: 100%;
-  padding: 10px 20px;
-  margin: 10px auto;
-  border-radius: 3px;
+.login-header {
+  color: black;
 }
 
 .error {

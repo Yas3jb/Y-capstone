@@ -47,7 +47,8 @@ export default function Login() {
     <div className="login-container">
       {errorMessage && <p className="error">{errorMessage}</p>}
       {successMessage && <p className="success">{successMessage}</p>}
-      <form onSubmit={handleLogin}>
+      <h1>Login</h1>
+      <form className="login-form" onSubmit={handleLogin}>
         <input
           type="email"
           value={email}
