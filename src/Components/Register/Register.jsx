@@ -46,6 +46,7 @@ export default function Register() {
     <div className="container">
       {successMessage && <p className="success">{successMessage}</p>}
       {errorMessage && <p className="error">{errorMessage}</p>}
+      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
