@@ -62,7 +62,7 @@ export default function Cart() {
                       +
                     </button>
                   </div>
-                  <p>
+                  <p className="total">
                     Total: $
                     {(
                       Number(cartItems[product.id]) * Number(product.price)
@@ -74,7 +74,7 @@ export default function Cart() {
                 </div>
               </div>
             ))}
-            <div className="cart-total">
+            <div className="grand-total">
               Grand Total: ${totalCost.toFixed(2)}
             </div>
           </div>
@@ -82,7 +82,9 @@ export default function Cart() {
       ) : (
         <div className="cart-no-items">
           <h1>No Items in the Cart</h1>
-          <Link to="/">Go back</Link>{" "}
+          <a className="go-back" href="/">
+            Go Back
+          </a>
         </div>
       )}
     </div>
