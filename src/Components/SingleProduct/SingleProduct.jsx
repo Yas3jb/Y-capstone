@@ -1,25 +1,19 @@
 import { useState, useEffect, useContext } from "react";
-// Import fetchProducts function
-import { fetchSingleProduct } from "../../API/api.js";
-// Import useParams
 import { useParams } from "react-router-dom";
-import "../SingleProduct/SingleProduct.css";
+import { fetchSingleProduct } from "../../API/api.js";
 import { FaPlus } from "react-icons/fa";
 import { CartContext } from "../Context/CartContextProvider.jsx";
 
 export default function SingleProduct() {
-  // State variable to store the product details
   const [product, setProduct] = useState([]);
   const { addToCart } = useContext(CartContext);
   const [notification, setNotification] = useState("");
-  // Accessing route parameters
   const { id } = useParams();
 
-  // Effect hook to fetch product details
   useEffect(() => {
     fetchSingleProduct(id)
       .then((product) => {
-        setProduct(product); // Update the 'products' state variable
+        setProduct(product);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -30,35 +24,39 @@ export default function SingleProduct() {
     addToCart(product);
     const message = `${product.title} has been added to the cart!`;
     setNotification(message);
-    // Clear notification after 3 seconds
     setTimeout(() => {
       setNotification();
     }, 3000);
   };
+
   return (
     <>
-      {notification && <p className="notification">{notification}</p>}
-      <div className="single-product-container">
-        <img
-          src={product.image}
-          alt="Product Image"
-          className="single-product-image"
-        />
-        <div className="single-product-details">
-          <h2 className="single-product-title">{product.title}</h2>
-          <p className="single-product-description">
-            Description: {product.description}
-          </p>
-          <h4 className="single-product-price">
-            Price: <span className="price-span">${product.price}</span>{" "}
-          </h4>
-          <h4>Rating: {product.rating && product.rating.rate}</h4>
-          <button
-            onClick={() => handleAddToCart(product)}
-            className="add-button"
-          >
-            <FaPlus />
-          </button>
+      {notification && (
+        <p className="bg-green-500 text-white px-4 py-2">{notification}</p>
+      )}
+      <div className="container mx-auto mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <img
+            src={product.image}
+            alt="Product Image"
+            className="w-full h-auto"
+          />
+          <div className="flex flex-col justify-center">
+            <h2 className="text-2xl font-semibold mb-4">{product.title}</h2>
+            <p className="mb-4">Description: {product.description}</p>
+            <h4 className="mb-4">
+              Price: <span className="font-semibold">${product.price}</span>
+            </h4>
+            <h4 className="mb-4">
+              Rating: {product.rating && product.rating.rate}
+            </h4>
+            <button
+              onClick={() => handleAddToCart(product)}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              <FaPlus className="mr-1" /> Add to Cart
+            </button>
+          </div>
         </div>
       </div>
     </>

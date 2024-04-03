@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css";
 import { IoCartOutline } from "react-icons/io5";
 import { MdOutlineAccountCircle } from "react-icons/md";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../Context/CartContextProvider";
-import { useState, useEffect } from "react";
 import { fetchCategories } from "../../API/api.js";
 
 export default function Navbar({ token, setToken, setCategory }) {
@@ -38,12 +36,14 @@ export default function Navbar({ token, setToken, setCategory }) {
   };
 
   return (
-    <header>
-      <h1 className="logo-name">E-Shop</h1>
-      <div>
-        <ul className="nav-links">
+    <header className="bg-gray-800 text-white py-4 px-8 flex justify-between items-center">
+      <h1 className="text-2xl font-bold">E-Shop</h1>
+      <nav>
+        <ul className="flex space-x-4">
           <li>
-            <Link to="/">ALL</Link>{" "}
+            <Link to="/" className="hover:text-blue-500">
+              ALL
+            </Link>{" "}
           </li>
           {/* Display categories */}
           {categories.map((category, i) => (
@@ -52,34 +52,33 @@ export default function Navbar({ token, setToken, setCategory }) {
               <Link
                 onClick={() => setCategory(category)}
                 to={`/products?category=${category}`}
+                className="hover:text-blue-500"
               >
                 {category.toUpperCase()}
               </Link>
             </li>
           ))}
         </ul>
-      </div>
-      <div className="icons-container">
+      </nav>
+      <div className="flex items-center space-x-4">
         {/* Conditional rendering based on token */}
         {token ? (
-          <button className="logout-btn" onClick={handleLogout}>
+          <button
+            onClick={handleLogout}
+            className="text-white hover:text-blue-500"
+          >
             Logout
           </button>
         ) : (
-          <li className="nav-login">
-            <Link to="/login">
-              <MdOutlineAccountCircle />
-            </Link>
-          </li>
-        )}
-        <li className="nav-register">
-          <Link to="/cart">
-            <IoCartOutline />
+          <Link to="/login" className="text-white hover:text-blue-500">
+            <MdOutlineAccountCircle />
           </Link>
-        </li>
-
+        )}
+        <Link to="/cart" className="text-white hover:text-blue-500">
+          <IoCartOutline />
+        </Link>
         {/* Display cart count */}
-        <li className="nav-cart-count">{cartCount}</li>
+        <span className="text-white">{cartCount}</span>
       </div>
     </header>
   );
