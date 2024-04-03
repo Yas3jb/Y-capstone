@@ -2,6 +2,7 @@ import { useState } from "react";
 // Import createUser function
 import { createUser } from "../../API/api.js";
 import { Link } from "react-router-dom";
+import "../Register/Register.css";
 
 // Component for user registration
 export default function Register() {
@@ -42,40 +43,51 @@ export default function Register() {
   };
 
   return (
-    <div>
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+    <div className="container">
+      {successMessage && <p className="success">{successMessage}</p>}
+      {errorMessage && <p className="error">{errorMessage}</p>}
+      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={firstName}
           placeholder="First Name"
           onChange={(e) => setFirstName(e.target.value)}
+          className="input-field"
         />
         <input
           type="text"
           value={lastName}
           placeholder="Last Name"
           onChange={(e) => setLastName(e.target.value)}
+          className="input-field"
         />
         <input
           type="email"
           value={email}
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
+          className="input-field"
         />
         <input
           type="password"
           value={password}
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
+          className="input-field"
         />
-        <button disabled={!firstName || !lastName || !email || !password}>
+        <button
+          className="register-btn"
+          disabled={!firstName || !lastName || !email || !password}
+        >
           Register
         </button>
       </form>
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
+      <p className="text">
+        Already have an account?{" "}
+        <a className="register-link" href="/login">
+          Login
+        </a>
       </p>
     </div>
   );

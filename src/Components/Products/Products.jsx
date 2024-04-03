@@ -1,28 +1,26 @@
 /* eslint-disable react/prop-types */
-// Import useState, useEffect, and useContext
 import { useState, useEffect, useContext } from "react";
-// Import fetchProducts function
 import { fetchProducts } from "../../API/api.js";
-// Import CartContext from CartContextProvider
 import { CartContext } from "../Context/CartContextProvider.jsx";
-// Import useNavigate
 import { useNavigate } from "react-router-dom";
 import "./Products.css";
+import { FaEye } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
+import Banner from "../Banner/Banner.jsx";
 
 export default function Products({ category }) {
-  // State variable to store the products
+  // State variable
   const [products, setProducts] = useState([]);
-  // Hook for navigation
-  const navigate = useNavigate();
-  // Destructuring addToCart function from CartContext
+  const [sort, setSort] = useState("title");
+  const [sortOrder, setSortOrder] = useState("asc");
   const { addToCart } = useContext(CartContext);
+  const [notification, setNotification] = useState("");
+  const navigate = useNavigate();
 
   // Effect hook to fetch products
   useEffect(() => {
-    // Fetching products from API
     fetchProducts()
       .then((products) => {
-        // Update the 'products' state variable
         setProducts(products);
       })
       .catch((error) => {
@@ -44,31 +42,95 @@ export default function Products({ category }) {
     }
     return true;
   };
+
+  // Function to sort
+  const sortProductsByName = (a, b) => {
+    const opt1 = String(a[sort]).toLowerCase(); // Fixed typo: changed 'string' to 'String'
+    const opt2 = String(b[sort]).toLowerCase(); // Fixed typo: changed 'string' to 'String'
+    if (opt1 < opt2) {
+      return sortOrder === "asc" ? -1 : 1;
+    }
+    if (opt1 > opt2) {
+      return sortOrder === "asc" ? 1 : -1;
+    }
+    return 0;
+  };
+
+  const handleSortChange = (e) => {
+    setSort(e.target.value);
+  };
+
+  const handleOrderChange = () => {
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+  };
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    const message = `${product.title} has been added to the cart!`;
+    setNotification(message);
+    // Clear notification after 3 seconds
+    setTimeout(() => {
+      setNotification();
+    }, 3000);
+  };
+
   return (
-    <div className="products-container">
-      {products.filter(filterProducts).map((product) => (
-        <section key={product.id} className="product-card">
-          <img
-            className="product-image"
-            src={product.image}
-            alt={product.title}
-          />
-          <h3 className="product-title">{product.title}</h3>
-          <p className="product-desc">
-            {truncateDescription(product.description)}
-          </p>{" "}
-          <h4 className="product-price"> ${product.price}</h4>
-          <button onClick={() => addToCart(product)} className="add-button">
-            Add
-          </button>
-          <button
-            onClick={() => navigate(`/products/${product.id}`)}
-            className="view-button"
-          >
-            View
-          </button>
-        </section>
-      ))}
-    </div>
+    <>
+      {notification && <p className="notification">{notification}</p>}
+      <Banner />
+      <div className="header-text">
+        <h2 className="view-products-text">
+          View All {category ? category : "Products"}
+        </h2>
+      </div>
+      <div className="sort-options">
+        <label htmlFor="sort">Sort by:</label>
+        <select value={sort} onChange={handleSortChange}>
+          <option value="title">Title</option>
+        </select>
+        <button className="sort" onClick={handleOrderChange}>
+          {sortOrder === "asc" ? "Ascending" : "Descending"}
+        </button>
+      </div>
+      <div className="product-container">
+        <div className="product-list">
+          {products
+            .filter(filterProducts)
+            .sort(sortProductsByName)
+            .map((product) => (
+              <div key={product.id} className="product-card">
+                <img
+                  className="product-image"
+                  src={product.image}
+                  alt="Not found"
+                />
+                <div className="product-content">
+                  <h3 className="product-title">{product.title}</h3>
+                  <p className="product-desc">
+                    {truncateDescription(product.description)}
+                  </p>
+                  <div className="product-price">
+                    <h4> $ {product.price}</h4>
+                  </div>
+                </div>
+                <div className="btn-container">
+                  <button
+                    onClick={() => handleAddToCart(product)}
+                    className="add-button"
+                  >
+                    <FaPlus />
+                  </button>
+                  <button
+                    onClick={() => navigate(`/products/${product.id}`)}
+                    className="view-button"
+                  >
+                    <FaEye />
+                  </button>
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+    </>
   );
 }

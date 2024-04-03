@@ -1,0 +1,45 @@
+.login-container {
+  display: inline-block;
+  width: 50%;
+  margin: 10% 23%;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.login-header {
+  color: black;
+}
+
+.error {
+  text-align: center;
+  margin-bottom: 20px;
+  color: red;
+}
+
+.success {
+  text-align: center;
+  margin-bottom: 20px;
+  color: green;
+}
+
+.login-btn {
+  margin: 10px auto;
+  background-color: black;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.text {
+  text-align: center;
+  margin: 20px;
+}
+
+.login-link {
+  color: red;
+  background: white;
+}

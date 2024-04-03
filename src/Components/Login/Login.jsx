@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchUser, Authenticate } from "../../API/api.js";
 import { useNavigate } from "react-router-dom";
+import "../Login/Login.css";
 
 // Component for user login
 export default function Login() {
@@ -43,26 +44,35 @@ export default function Login() {
   };
 
   return (
-    <div>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-      <form onSubmit={handleLogin}>
+    <div className="login-container">
+      {errorMessage && <p className="error">{errorMessage}</p>}
+      {successMessage && <p className="success">{successMessage}</p>}
+      <h1>Login</h1>
+      <form className="login-form" onSubmit={handleLogin}>
         <input
           type="email"
           value={email}
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
+          className="input-field"
         />
         <input
           type="password"
           value={password}
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
+          className="input-field"
         />
-        <button disabled={!email || !password}>Login</button>
+        <button className="login-btn" disabled={!email || !password}>
+          Login
+        </button>
       </form>
-      <p>
-        If you don't have an account, <a href="/register">create one</a>.
+      <p className="text">
+        If you don't have an account,{" "}
+        <a className="login-link" href="/register">
+          create one
+        </a>
+        .
       </p>
     </div>
   );

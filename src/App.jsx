@@ -10,6 +10,7 @@ import Login from "./Components/Login/Login";
 import Navbar from "./Components/Navbar/Navbar";
 import Cart from "./Components/Cart/Cart";
 import { CartContextProvider } from "./Components/Context/CartContextProvider";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   // State variable to store authentication token
@@ -33,6 +34,7 @@ function App() {
           />
           <Route path="/cart" element={<Cart />} />
         </Routes>
+        <Footer />
       </CartContextProvider>
     </div>
   );

@@ -1,36 +1,33 @@
-/* Cart.css */
-
 .cart-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 100%;
+  padding: 100px;
   display: flex;
   flex-direction: column;
-  position: relative; /* Add position: relative to the container */
+  position: relative;
 }
 
 .cart-heading {
   font-size: 24px;
-  font-weight: bold;
+  padding: 30px;
   margin-bottom: 20px;
 }
 
 .cart-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 2px solid #ccc;
   padding: 10px 0;
 }
 
 .cart-item button {
   padding: 8px 16px;
-  background-color: #ff6347;
+  background-color: black;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin: 5px 10px;
 }
 
 .cart-item button:hover {
@@ -39,37 +36,45 @@
 
 .cart-item img {
   max-width: 100px;
-  margin-right: 20px;
-}
-
-.cart-item-details {
-  flex-grow: 1;
+  margin-right: 50px;
 }
 
 .cart-item-title {
   font-size: 18px;
-  font-weight: bold;
+  margin: 5px 10px;
 }
 
 .cart-item-price {
-  margin-top: 5px;
   color: #666;
+  margin: 5px 10px;
 }
 
 .cart-item-quantity {
-  margin-top: 5px;
+  margin: 5px 10px;
 }
 
-.cart-total {
-  margin-top: auto; /* Pushes the total to the bottom of the container */
+.total {
+  margin: 5px 10px;
+}
+
+.grand-total {
+  margin-top: auto;
   font-size: 20px;
   font-weight: bold;
-  position: absolute; /* Position the total element */
-  bottom: 20px; /* Distance from the bottom */
-  right: 20px; /* Distance from the right */
+  position: absolute;
+  bottom: 20px;
+  right: 50px;
+  margin: 10px 10px;
 }
 
 .cart-no-items {
   font-size: 24px;
   text-align: center;
+  padding: 100px;
+}
+
+.go-back {
+  color: red;
+  background-color: white;
+  padding: 10px auto;
 }
