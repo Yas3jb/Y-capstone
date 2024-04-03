@@ -79,7 +79,9 @@ export default function Products({ category }) {
       {notification && <p className="notification">{notification}</p>}
       <Banner />
       <div className="header-text">
-        <h2>View All {category ? category : "Products"}</h2>
+        <h2 className="view-products-text">
+          View All {category ? category : "Products"}
+        </h2>
       </div>
       <div className="sort-options">
         <label htmlFor="sort">Sort by:</label>

@@ -108,16 +108,28 @@ header {
 }
 
 /* Media queries for smaller screens */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
+  header {
+    flex-direction: column;
+    padding: 25px 10px;
+  }
+
   .nav-links {
-    color: white;
-    background: black;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  .nav-links a {
+    font-size: 18px;
   }
 
   .icons-container {
-    background-color: black;
-    color: white;
-    justify-content: flex-end;
-    flex-grow: 1;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .icons-container a {
+    margin: 0 10px;
   }
 }

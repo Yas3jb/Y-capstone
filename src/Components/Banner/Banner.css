@@ -47,3 +47,50 @@ p {
   margin-bottom: 48px;
   letter-spacing: 3px;
 }
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  section {
+    padding: 100px 10%;
+  }
+
+  .banner-text h1 {
+    font-size: 36px;
+    letter-spacing: 6px;
+  }
+
+  .banner-text span {
+    font-size: 30px;
+  }
+
+  .banner-text p {
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Media queries for smaller screens */
+@media screen and (max-width: 500px) {
+  .banner {
+    padding-top: 100%; /* Adjust padding to position the banner */
+  }
+
+  .banner-text h1 {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+  }
+
+  .banner-text span {
+    font-size: 20px;
+  }
+
+  .banner-text p {
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+  }
+}
