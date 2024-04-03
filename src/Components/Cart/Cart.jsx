@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import { CartContext } from "../Context/CartContextProvider.jsx";
-import { Link } from "react-router-dom";
 import "./Cart.css";
 
 export default function Cart() {

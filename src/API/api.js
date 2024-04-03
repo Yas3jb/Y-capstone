@@ -94,7 +94,6 @@ export const Authenticate = async () => {
 export const fetchCategories = async () => {
   try {
     const response = await axios.get(`${URL}/products/categories`);
-    console.log(response);
     return response.data;
   } catch (err) {
     console.error(err);

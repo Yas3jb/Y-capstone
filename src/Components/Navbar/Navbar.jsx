@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../Image/logo.png";
 import { IoCartOutline } from "react-icons/io5";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { useContext } from "react";
@@ -12,7 +11,7 @@ import { fetchCategories } from "../../API/api.js";
 export default function Navbar({ token, setToken, setCategory }) {
   // Hook for navigation
   const navigate = useNavigate();
-  const { cartCount } = useContext(CartContext);
+  const { cartCount, resetCart } = useContext(CartContext);
   const [categories, setCategories] = useState([]);
 
   // Fetch categories
@@ -33,6 +32,7 @@ export default function Navbar({ token, setToken, setCategory }) {
     // Clear authentication state or tokens
     localStorage.removeItem("token");
     setToken(null);
+    resetCart();
     // Redirect to the login page
     navigate("/login");
   };
@@ -40,10 +40,9 @@ export default function Navbar({ token, setToken, setCategory }) {
   return (
     <header>
       <h1 className="logo-name">E-Shop</h1>
-      {/* <img className="logo" src={logo} alt="Image not found" /> */}
       <div>
         <ul className="nav-links">
-          <li className="test">
+          <li>
             <Link to="/">ALL</Link>{" "}
           </li>
           {/* Display categories */}
