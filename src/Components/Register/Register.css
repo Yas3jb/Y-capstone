@@ -46,3 +46,23 @@
   color: red;
   background: white;
 }
+
+/* Media queries for smaller screens */
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 100%;
+    margin: 32% auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 100%;
+    margin: 50% auto;
+  }
+
+  .login-btn {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

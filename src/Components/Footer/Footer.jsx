@@ -6,11 +6,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-section">
           <h2>About Us</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            convallis libero eget risus feugiat consequat. Morbi eu mauris vel
-            risus suscipit cursus.
-          </p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div className="footer-section">
           <h2>Quick Links</h2>

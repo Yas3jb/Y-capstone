@@ -73,23 +73,23 @@ p {
 /* Media queries for smaller screens */
 @media screen and (max-width: 500px) {
   .banner {
-    padding-top: 100%; /* Adjust padding to position the banner */
+    padding-top: 100%;
   }
 
   .banner-text h1 {
     text-align: center;
-    font-size: 24px;
+    font-size: 18px;
     letter-spacing: 4px;
     margin-bottom: 15px;
   }
 
   .banner-text span {
-    font-size: 20px;
+    font-size: 14px;
   }
 
   .banner-text p {
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 1px;
     margin-bottom: 30px;
   }
