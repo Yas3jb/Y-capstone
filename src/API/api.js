@@ -8,7 +8,7 @@ const Base_URL = "http://localhost:3000/api";
 // Fetch Products
 export const fetchProducts = async () => {
   try {
-    const response = await axios.get(`${URL}/products`);
+    const response = await axios.get(`${Base_URL}/products`);
     return response.data;
   } catch (err) {
     console.error(err);
@@ -18,7 +18,7 @@ export const fetchProducts = async () => {
 // Fetch Single Product
 export const fetchSingleProduct = async (id) => {
   try {
-    const response = await axios.get(`${URL}/products/${id}`);
+    const response = await axios.get(`${Base_URL}/products/${id}`);
     return response.data;
   } catch (err) {
     console.error(err);
@@ -93,7 +93,17 @@ export const Authenticate = async () => {
 // fetch Categories
 export const fetchCategories = async () => {
   try {
-    const response = await axios.get(`${URL}/products/categories`);
+    const response = await axios.get(`${Base_URL}/categories`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// Fetch Single Category
+export const fetchSingleCategory = async (name) => {
+  try {
+    const response = await axios.get(`${Base_URL}/categories/${name}`);
     return response.data;
   } catch (err) {
     console.error(err);

@@ -5,8 +5,9 @@ import { CartContext } from "../Context/CartContextProvider.jsx";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaPlus } from "react-icons/fa";
 import Banner from "../Banner/Banner.jsx";
+import Categories from "../Categories/Categories.jsx";
 
-export default function Products({ category }) {
+export default function Products() {
   // State variable
   const [products, setProducts] = useState([]);
   const [sort, setSort] = useState("title");
@@ -33,14 +34,6 @@ export default function Products({ category }) {
       : description;
   };
 
-  // Function to filter products based on category
-  const filterProducts = (product) => {
-    if (category) {
-      return product.category === category;
-    }
-    return true;
-  };
-
   // Function to sort
   const sortProductsByName = (a, b) => {
     const opt1 = String(a[sort]).toLowerCase();
@@ -64,7 +57,7 @@ export default function Products({ category }) {
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    const message = `${product.title} has been added to the cart!`;
+    const message = `${product.name} has been added to the cart!`;
     setNotification(message);
     // Clear notification after 3 seconds
     setTimeout(() => {
@@ -79,9 +72,7 @@ export default function Products({ category }) {
       )}
       <Banner />
       <div className="container mx-auto">
-        <h2 className="text-2xl font-bold mt-8 mb-4">
-          {category ? `View All ${category} Products` : "View All Products"}
-        </h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4"></h2>
         <div className="flex items-center mb-4">
           <label htmlFor="sort" className="mr-2">
             Sort by:
@@ -100,42 +91,38 @@ export default function Products({ category }) {
             Sort {sortOrder === "asc" ? "Ascending" : "Descending"}
           </button>
         </div>
+        <Categories />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {products
-            .filter(filterProducts)
-            .sort(sortProductsByName)
-            .map((product) => (
-              <div key={product.id} className="border p-4 rounded">
-                <img
-                  className="w-full h-auto mb-2"
-                  src={product.image}
-                  alt="Not found"
-                />
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold mb-2">
-                    {product.title}
-                  </h3>
-                  <p className="mb-2">
-                    {truncateDescription(product.description)}
-                  </p>
-                  <div className="mb-2">$ {product.price}</div>
-                  <div className="flex justify-center">
-                    <button
-                      onClick={() => handleAddToCart(product)}
-                      className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
-                    >
-                      <FaPlus className="mr-1" /> Add to Cart
-                    </button>
-                    <button
-                      onClick={() => navigate(`/products/${product.id}`)}
-                      className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
-                    >
-                      <FaEye className="mr-1" /> View
-                    </button>
-                  </div>
+          {products.sort(sortProductsByName).map((product) => (
+            <div key={product.id} className="border p-4 rounded">
+              <img
+                className="w-full h-auto mb-2"
+                src={product.imageurl}
+                alt="Not found"
+              />
+              <div className="text-center">
+                <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
+                <p className="mb-2">
+                  {truncateDescription(product.description)}
+                </p>
+                <div className="mb-2">$ {product.price}</div>
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => handleAddToCart(product)}
+                    className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
+                  >
+                    <FaPlus className="mr-1" /> Add to Cart
+                  </button>
+                  <button
+                    onClick={() => navigate(`/products/${product.id}`)}
+                    className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                  >
+                    <FaEye className="mr-1" /> View
+                  </button>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
       </div>
     </>

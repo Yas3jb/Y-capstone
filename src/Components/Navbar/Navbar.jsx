@@ -2,27 +2,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { MdOutlineAccountCircle } from "react-icons/md";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "../Context/CartContextProvider";
-import { fetchCategories } from "../../API/api.js";
 
-export default function Navbar({ token, setToken, setCategory }) {
+export default function Navbar({ token, setToken }) {
   // Hook for navigation
   const navigate = useNavigate();
   const { cartCount, resetCart } = useContext(CartContext);
-  const [categories, setCategories] = useState([]);
-
-  // Fetch categories
-  useEffect(() => {
-    fetchCategories()
-      .then((categories) => {
-        // Update the 'categories' state variable
-        setCategories(categories);
-      })
-      .catch((err) => {
-        console.error("Error fetching Categories:", err);
-      });
-  }, []);
 
   // Function to handle logout
   const handleLogout = (e) => {
@@ -45,19 +31,6 @@ export default function Navbar({ token, setToken, setCategory }) {
               ALL
             </Link>{" "}
           </li>
-          {/* Display categories */}
-          {categories.map((category, i) => (
-            <li key={i}>
-              {/* Use Link for navigation to category */}
-              <Link
-                onClick={() => setCategory(category)}
-                to={`/products?category=${category}`}
-                className="hover:text-violet-600"
-              >
-                {category.toUpperCase()}
-              </Link>
-            </li>
-          ))}
         </ul>
       </nav>
       <div className="flex items-center space-x-4">

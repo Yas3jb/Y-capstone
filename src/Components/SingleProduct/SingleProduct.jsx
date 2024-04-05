@@ -22,7 +22,7 @@ export default function SingleProduct() {
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    const message = `${product.title} has been added to the cart!`;
+    const message = `${product.name} has been added to the cart!`;
     setNotification(message);
     setTimeout(() => {
       setNotification();
@@ -37,18 +37,15 @@ export default function SingleProduct() {
       <div className="container mx-auto mt-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <img
-            src={product.image}
+            src={product.imageurl}
             alt="Product Image"
             className="w-full h-auto"
           />
           <div className="flex flex-col justify-center">
-            <h2 className="text-2xl font-semibold mb-4">{product.title}</h2>
+            <h2 className="text-2xl font-semibold mb-4">{product.name}</h2>
             <p className="mb-4">Description: {product.description}</p>
             <h4 className="mb-4">
               Price: <span className="font-semibold">${product.price}</span>
-            </h4>
-            <h4 className="mb-4">
-              Rating: {product.rating && product.rating.rate}
             </h4>
             <button
               onClick={() => handleAddToCart(product)}
