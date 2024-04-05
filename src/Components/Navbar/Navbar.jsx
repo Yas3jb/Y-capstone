@@ -36,12 +36,12 @@ export default function Navbar({ token, setToken, setCategory }) {
   };
 
   return (
-    <header className="bg-gray-800 text-white py-4 px-8 flex justify-between items-center">
-      <h1 className="text-2xl font-bold">E-Shop</h1>
+    <header className="bg-whtie text-slate-950 py-4 px-8 flex justify-between items-center">
+      <h1 className="text-3xl font-bold">E-Shop</h1>
       <nav>
         <ul className="flex space-x-4">
           <li>
-            <Link to="/" className="hover:text-blue-500">
+            <Link to="/" className="hover:text-violet-600">
               ALL
             </Link>{" "}
           </li>
@@ -52,7 +52,7 @@ export default function Navbar({ token, setToken, setCategory }) {
               <Link
                 onClick={() => setCategory(category)}
                 to={`/products?category=${category}`}
-                className="hover:text-blue-500"
+                className="hover:text-violet-600"
               >
                 {category.toUpperCase()}
               </Link>
@@ -65,20 +65,26 @@ export default function Navbar({ token, setToken, setCategory }) {
         {token ? (
           <button
             onClick={handleLogout}
-            className="text-white hover:text-blue-500"
+            className="text-slate-950 hover:text-violet-600"
           >
             Logout
           </button>
         ) : (
-          <Link to="/login" className="text-white hover:text-blue-500">
+          <Link
+            to="/login"
+            className="text-slate-950 text-lg hover:text-violet-600"
+          >
             <MdOutlineAccountCircle />
           </Link>
         )}
-        <Link to="/cart" className="text-white hover:text-blue-500">
+        <Link
+          to="/cart"
+          className="text-slate-950 text-lg hover:text-violet-600"
+        >
           <IoCartOutline />
         </Link>
         {/* Display cart count */}
-        <span className="text-white">{cartCount}</span>
+        <span className="text-slate-950 ">{cartCount}</span>
       </div>
     </header>
   );
