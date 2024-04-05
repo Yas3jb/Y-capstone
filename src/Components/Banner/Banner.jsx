@@ -1,10 +1,10 @@
 export default function Banner() {
   return (
-    <section className="bg-gray-800 text-white py-12 px-4">
+    <section className="bg-indigo-600 text-white py-12">
       <div className="max-w-3xl mx-auto text-center">
-        <h1 className="text-3xl font-bold underline">
+        <h1 className="text-4xl font-bold">
           Discover Exciting <br />{" "}
-          <span className="text-blue-500">New Products</span>
+          <span className="text-indigo-300">New Products</span>
         </h1>
         <p className="mt-4">
           Explore our latest arrivals and find something special for you!
