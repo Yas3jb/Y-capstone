@@ -70,58 +70,64 @@ export default function Products() {
       <Banner />
       <Categories />
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold my-8"> View All Products</h2>
-        <div className="flex items-center mb-4">
-          <label htmlFor="sort" className="mr-2">
+        <h2 className="text-indigo-300 text-3xl font-bold mt-8 mb-8 text-center underline-offset-8">
+          {" "}
+          View All Products
+        </h2>
+        <div className="flex items-center justify-center mb-5">
+          <label htmlFor="sort" className="text-black font-semibold mr-2">
             Sort by:
           </label>
           <select
             value={sort}
             onChange={handleSortChange}
-            className="p-2 border border-gray-300 rounded"
+            className="p-2  bg-white text-black focus:outline-none"
           >
             <option value="name">Name</option>
           </select>
           <button
             onClick={handleOrderChange}
-            className="ml-2 px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600"
+            className="ml-4 px-2 py-1 bg-indigo-300 text-white rounded-md hover:bg-indigo-700 scale-105 duration-300 focus:outline-none"
           >
             Sort {sortOrder === "asc" ? "A to Z" : "Z to A"}
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {products.sort(sortProductsByName).map((product) => (
-            <div
-              key={product.id}
-              className="border p-4 rounded-lg hover:shadow-lg transition duration-300"
-            >
-              <img
-                className="w-full h-auto mb-2 object-contain rounded-lg max-h-48"
-                src={product.imageurl}
-                alt={product.name}
-              />
-              <div className="text-center">
-                <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-                <p className="mb-2">{product.category_name}</p>
-                <div className="mb-2">$ {product.price}</div>
-                <div className="flex justify-center mt-4">
-                  <button
-                    onClick={() => handleAddToCart(product)}
-                    className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mr-4"
-                  >
-                    <FaPlus className="mr-2" /> Add to Cart
-                  </button>
-                  <button
-                    onClick={() => navigate(`/products/${product.id}`)}
-                    className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-                  >
-                    <FaEye className="mr-2" /> View
-                  </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-8 gap-7">
+          {products
+            .slice(0, 8)
+            .sort(sortProductsByName)
+            .map((product) => (
+              <div
+                key={product.id}
+                className="border p-7 rounded-lg hover:shadow-xl transition duration-300 relative"
+              >
+                <img
+                  className="w-full h-auto mb-2 object-contain rounded-lg max-h-48"
+                  src={product.imageurl}
+                  alt={product.name}
+                />
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold mb-1">{product.name}</h3>
+                  <p className="mb-1 text-slate-400">{product.category_name}</p>
+                  <div className="mb-1 text-red-500">$ {product.price}</div>
+                  <div className="mb-1 mt-3 flex justify-center">
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      className="flex justify-center items-center text-black w-12 h-12 rounded-full hover:bg-indigo-300 transition-all duration-300"
+                    >
+                      <FaPlus />
+                    </button>
+                    <button
+                      onClick={() => navigate(`/products/${product.id}`)}
+                      className="w-12 h-12 bg-white flex justify-center items-center text-black rounded-full hover:bg-indigo-300 transition-all duration-300"
+                    >
+                      <FaEye />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </>
