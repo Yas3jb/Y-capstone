@@ -36,38 +36,37 @@ export default function SingleProduct() {
           {notification}
         </p>
       )}
-      <div className="container mx-auto mt-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          <img
-            src={product.imageurl}
-            alt="Product Image"
-            className="w-full h-auto max-w-xs"
-          />
-          <div className="flex flex-col justify-center">
-            <h2 className="text-2xl text-center font-semibold mb-4">
-              {product.name}
-            </h2>
-            <p className="mb-4 text-center">
-              Description: {product.description}
-            </p>
-            <h4
-              className="mb-4 text-center
-            "
-            >
-              Price:{" "}
-              <span className="font-semibold text-red-700">
-                ${product.price}
-              </span>
-            </h4>
-            <button
-              onClick={() => handleAddToCart(product)}
-              className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mr-4"
-            >
-              <FaPlus />
-            </button>
+      <section className="pt-32 pb-12 lg:py32 h-screen flex items-center">
+        <div className="container mx-auto">
+          <div className="flex flex-col lg:flex-row items-center">
+            <div className="flex flex-1 justify-center items-center mb-8 lg:mb-0">
+              <img
+                src={product.imageurl}
+                alt="Product Image"
+                className="max-w-[200px] lg:max-w-sm"
+              />
+            </div>
+            <div className="flex-1 text-center lg:text-left">
+              <h1 className="text-[26px] font-medium mb-2 max-w-[450px] mx-auto lg:mx-0">
+                {product.name}
+              </h1>
+
+              <p className="mb-8"> {product.description}</p>
+              <div className="text-xl text-red-500 font-medium mb-6">
+                $ {product.price}
+              </div>
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="bg-indigo-300 py-4 px-8 text-white hover:bg-indigo-700 scale-105 duration-300"
+              >
+                Add to Cart
+              </button>
+            </div>
           </div>
+
+          <div className="flex flex-col justify-center"></div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

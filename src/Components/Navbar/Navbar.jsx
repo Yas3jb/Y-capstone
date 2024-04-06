@@ -4,6 +4,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContextProvider.jsx";
+import logo from "../Images/logo.png";
 
 export default function Navbar({ token, setToken }) {
   // Hook for navigation
@@ -22,9 +23,9 @@ export default function Navbar({ token, setToken }) {
   };
 
   return (
-    <header className="bg-white text-slate-950 py-4 px-8 flex justify-between items-center fixed top-0 left-0 w-full z-10">
-      <Link to="/" className="text-3xl font-bold">
-        Y-shop
+    <header className="bg-white text-slate-950 py-4 px-8 flex justify-between items-center fixed top-0 left-0 w-full z-10 shadow-md">
+      <Link to="/" className="flex items-center">
+        <img className="h-12 mr-4" src={logo} alt="" />
       </Link>
 
       <div className="flex items-center space-x-4 text-lg">
