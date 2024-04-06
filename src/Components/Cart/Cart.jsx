@@ -37,8 +37,8 @@ export default function Cart() {
               >
                 <div className="w-1/4">
                   <img
-                    src={product.image}
-                    alt={product.title}
+                    src={product.imageurl}
+                    alt={product.name}
                     className="w-full h-auto"
                   />
                 </div>

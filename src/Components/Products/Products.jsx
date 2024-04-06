@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect, useContext } from "react";
 import { fetchProducts } from "../../API/api.js";
 import { CartContext } from "../Context/CartContextProvider.jsx";
@@ -8,7 +7,7 @@ import Banner from "../Banner/Banner.jsx";
 import Categories from "../Categories/Categories.jsx";
 
 export default function Products() {
-  // State variable
+  // State variables
   const [products, setProducts] = useState([]);
   const [sort, setSort] = useState("title");
   const [sortOrder, setSortOrder] = useState("asc");
@@ -29,12 +28,12 @@ export default function Products() {
 
   // Function to truncate the description to 100 characters
   const truncateDescription = (description) => {
-    return description.length > 50
-      ? description.substring(0, 50) + "..."
+    return description.length > 100
+      ? description.substring(0, 100) + "..."
       : description;
   };
 
-  // Function to sort
+  // Function to sort products
   const sortProductsByName = (a, b) => {
     const opt1 = String(a[sort]).toLowerCase();
     const opt2 = String(b[sort]).toLowerCase();
@@ -47,33 +46,38 @@ export default function Products() {
     return 0;
   };
 
+  // Handle sorting change
   const handleSortChange = (e) => {
     setSort(e.target.value);
   };
 
+  // Handle order change
   const handleOrderChange = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
+  // Handle adding product to cart
   const handleAddToCart = (product) => {
     addToCart(product);
     const message = `${product.name} has been added to the cart!`;
     setNotification(message);
     // Clear notification after 3 seconds
     setTimeout(() => {
-      setNotification();
+      setNotification("");
     }, 3000);
   };
 
   return (
     <>
       {notification && (
-        <p className="bg-green-500 text-white px-4 py-2">{notification}</p>
+        <p className="bg-green-500 text-white px-4 py-2 fixed top-0 right-0 m-4 z-50">
+          {notification}
+        </p>
       )}
       <Banner />
       <Categories />
       <div className="container mx-auto">
-        <h2 className="text-2xl font-bold mt-8 mb-4"></h2>
+        <h2 className="text-3xl font-bold my-8">Products</h2>
         <div className="flex items-center mb-4">
           <label htmlFor="sort" className="mr-2">
             Sort by:
@@ -95,11 +99,14 @@ export default function Products() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {products.sort(sortProductsByName).map((product) => (
-            <div key={product.id} className="border p-4 rounded">
+            <div
+              key={product.id}
+              className="border p-4 rounded-lg hover:shadow-lg transition duration-300"
+            >
               <img
-                className="w-full h-auto mb-2"
+                className="w-full h-auto mb-2 object-contain rounded-lg max-h-48"
                 src={product.imageurl}
-                alt="Not found"
+                alt={product.name}
               />
               <div className="text-center">
                 <h3 className="text-lg font-semibold mb-2">{product.name}</h3>

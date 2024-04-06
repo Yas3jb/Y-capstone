@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { useContext } from "react";
-import { CartContext } from "../Context/CartContextProvider";
+import { CartContext } from "../Context/CartContextProvider.jsx";
 
 export default function Navbar({ token, setToken }) {
   // Hook for navigation

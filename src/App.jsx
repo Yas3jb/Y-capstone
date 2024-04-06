@@ -16,17 +16,15 @@ import SingleCategory from "./Components/SingleCategory/SingleCategory";
 function App() {
   // State variable to store authentication token
   const [token, setToken] = useState(localStorage.getItem("token") || null);
-  // State variable to store the selected category
-  const [category, setCategory] = useState("");
 
   // Render Components
   return (
     <div>
       <CartContextProvider>
-        <Navbar token={token} setToken={setToken} setCategory={setCategory} />
+        <Navbar token={token} setToken={setToken} />
         <Routes>
           <Route path="/" element={<Products />} />
-          <Route path="/products" element={<Products category={category} />} />
+          <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/register" element={<Register token={setToken} />} />
           <Route

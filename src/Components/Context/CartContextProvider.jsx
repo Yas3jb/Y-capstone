@@ -18,10 +18,10 @@ export const CartContextProvider = (props) => {
     const getCart = async () => {
       const PRODUCTS = await fetchProducts();
       let cart = {};
-      // Starting cart items with count as 0
-      for (let i = 1; i < PRODUCTS.length + 1; i++) {
-        cart[i] = 0;
-      }
+      // Initialize cartItems with product ids as keys
+      PRODUCTS.forEach((product) => {
+        cart[product.id] = 0;
+      });
       setCartItems(cart);
     };
     getCart();
@@ -44,11 +44,17 @@ export const CartContextProvider = (props) => {
 
   // Function to remove item from cart
   const removeFromCart = (item) => {
-    console.log(cartItems);
     if (cartItems[item.id] === 1) {
-      setCart(cart.filter((i) => i !== item));
+      // If the item's count is 1, remove it from cartItems
+      const updatedCartItems = { ...cartItems };
+      delete updatedCartItems[item.id];
+      setCartItems(updatedCartItems);
+    } else {
+      // Otherwise, decrease the count
+      setCartItems((prev) => ({ ...prev, [item.id]: prev[item.id] - 1 }));
     }
-    setCartItems((prev) => ({ ...prev, [item.id]: prev[item.id] - 1 }));
+    // Update cart by filtering out the item
+    setCart(cart.filter((i) => i !== item));
   };
 
   // Function to calculate total cost of items in cart
