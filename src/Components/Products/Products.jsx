@@ -9,7 +9,7 @@ import Categories from "../Categories/Categories.jsx";
 export default function Products() {
   // State variables
   const [products, setProducts] = useState([]);
-  const [sort, setSort] = useState("title");
+  const [sort, setSort] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
   const { addToCart } = useContext(CartContext);
   const [notification, setNotification] = useState("");
@@ -25,13 +25,6 @@ export default function Products() {
         console.error("Error fetching products:", error);
       });
   }, []);
-
-  // Function to truncate the description to 100 characters
-  const truncateDescription = (description) => {
-    return description.length > 100
-      ? description.substring(0, 100) + "..."
-      : description;
-  };
 
   // Function to sort products
   const sortProductsByName = (a, b) => {
@@ -77,7 +70,7 @@ export default function Products() {
       <Banner />
       <Categories />
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold my-8">Products</h2>
+        <h2 className="text-3xl font-bold my-8"> View All Products</h2>
         <div className="flex items-center mb-4">
           <label htmlFor="sort" className="mr-2">
             Sort by:
@@ -87,13 +80,13 @@ export default function Products() {
             onChange={handleSortChange}
             className="p-2 border border-gray-300 rounded"
           >
-            <option value="title">Title</option>
+            <option value="name">Name</option>
           </select>
           <button
             onClick={handleOrderChange}
-            className="ml-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="ml-2 px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600"
           >
-            Sort {sortOrder === "asc" ? "Ascending" : "Descending"}
+            Sort {sortOrder === "asc" ? "A to Z" : "Z to A"}
           </button>
         </div>
 
@@ -110,22 +103,20 @@ export default function Products() {
               />
               <div className="text-center">
                 <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-                <p className="mb-2">
-                  {truncateDescription(product.description)}
-                </p>
+                <p className="mb-2">{product.category_name}</p>
                 <div className="mb-2">$ {product.price}</div>
-                <div className="flex justify-center">
+                <div className="flex justify-center mt-4">
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
+                    className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mr-4"
                   >
-                    <FaPlus className="mr-1" /> Add to Cart
+                    <FaPlus className="mr-2" /> Add to Cart
                   </button>
                   <button
                     onClick={() => navigate(`/products/${product.id}`)}
-                    className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                    className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                   >
-                    <FaEye className="mr-1" /> View
+                    <FaEye className="mr-2" /> View
                   </button>
                 </div>
               </div>

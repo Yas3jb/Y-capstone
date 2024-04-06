@@ -17,10 +17,10 @@ export default function Categories() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold my-5 text-center">
+      <h1 className="text-3xl font-bold mt-36 text-center">
         Explore All Categories
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 my-10">
         {categories.map((category) => (
           <div
             key={category.id}

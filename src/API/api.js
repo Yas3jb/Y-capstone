@@ -2,7 +2,6 @@
 import axios from "axios";
 
 // DATA URL
-const URL = "https://fakestoreapi.com";
 const Base_URL = "http://localhost:3000/api";
 
 // Fetch Products
