@@ -1,6 +1,6 @@
 export default function Banner() {
   return (
-    <section className="bg-indigo-600 text-white py-12">
+    <section className="bg-indigo-600 text-white p-36 ">
       <div className="max-w-3xl mx-auto text-center">
         <h1 className="text-4xl font-bold">
           Discover Exciting <br />{" "}

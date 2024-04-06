@@ -71,6 +71,7 @@ export default function Products() {
         <p className="bg-green-500 text-white px-4 py-2">{notification}</p>
       )}
       <Banner />
+      <Categories />
       <div className="container mx-auto">
         <h2 className="text-2xl font-bold mt-8 mb-4"></h2>
         <div className="flex items-center mb-4">
@@ -91,7 +92,7 @@ export default function Products() {
             Sort {sortOrder === "asc" ? "Ascending" : "Descending"}
           </button>
         </div>
-        <Categories />
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {products.sort(sortProductsByName).map((product) => (
             <div key={product.id} className="border p-4 rounded">
