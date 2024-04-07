@@ -1,4 +1,10 @@
-import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+  FaPhoneAlt,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -50,6 +56,32 @@ const Footer = () => {
       </div>
       <div className="text-center mt-8">
         <p className="text-sm text-white">Created by Yasin</p>
+        <div className="flex justify-center items-center mt-2">
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white mx-2 hover:text-indigo-300 transition-all duration-300"
+          >
+            <FaLinkedinIn />
+          </a>
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white mx-2 hover:text-indigo-300 transition-all duration-300"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white mx-2 hover:text-indigo-300 transition-all duration-300"
+          >
+            <FaInstagram />
+          </a>
+        </div>
       </div>
     </footer>
   );
