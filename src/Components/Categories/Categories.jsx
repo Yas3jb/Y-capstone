@@ -28,7 +28,7 @@ export default function Categories() {
           >
             <div>
               <div className="my-5">
-                <p className="text-5xl xl:text-6xl font-bold mb-10 text-left ">
+                <p className="text-5xl xl:text-5xl font-bold mb-10 text-left ">
                   {category.name}
                 </p>
                 <Link

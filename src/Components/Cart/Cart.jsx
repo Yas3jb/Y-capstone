@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { CartContext } from "../Context/CartContextProvider.jsx";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function Cart() {
   const { cart, cartItems, removeFromCart, updateQuantity } =
@@ -25,65 +26,89 @@ export default function Cart() {
   };
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="container mx-auto mt-20">
       {cart.length ? (
         <div>
-          <h1 className="text-2xl font-bold mb-4">Items In Your Cart</h1>
-          <div>
-            {cart.map((product, i) => (
-              <div
-                className="flex items-center border-b border-gray-200 py-4"
-                key={i}
-              >
-                <div className="w-1/4">
-                  <img
-                    src={product.imageurl}
-                    alt={product.name}
-                    className="w-full h-auto"
-                  />
-                </div>
-                <div className="w-3/4 ml-4">
-                  <h3 className="text-lg font-semibold mb-2">
-                    {product.title}
-                  </h3>
-                  <p className="text-gray-600 mb-2">Price: ${product.price}</p>
-                  <div className="flex items-center mb-2">
-                    <button
-                      className="bg-gray-200 text-gray-700 px-2 py-1 rounded-l"
-                      onClick={() =>
-                        handleQuantityChange(product, cartItems[product.id] - 1)
-                      }
-                    >
-                      -
-                    </button>
-                    <span className="px-4">{cartItems[product.id]}</span>
-                    <button
-                      className="bg-gray-200 text-gray-700 px-2 py-1 rounded-r"
-                      onClick={() =>
-                        handleQuantityChange(product, cartItems[product.id] + 1)
-                      }
-                    >
-                      +
-                    </button>
-                  </div>
-                  <p className="font-semibold">
-                    Total: $
+          <h1 className="text-2xl text-center font-bold mb-4 py-14">
+            Items In Your Cart
+          </h1>
+          <table className="w-full border-collapse">
+            <thead>
+              <tr>
+                <th className="border-b border-gray-200 py-2">Product</th>
+                <th className="border-b border-gray-200 py-2">Price</th>
+                <th className="border-b border-gray-200 py-2">Quantity</th>
+                <th className="border-b border-gray-200 py-2">Total</th>
+                <th className="border-b border-gray-200 py-2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((product, i) => (
+                <tr key={i} className="border-b border-gray-200">
+                  <td className="py-4">
+                    <div className="flex items-center">
+                      <div className="w-1/4 mr-4">
+                        <img
+                          src={product.imageurl}
+                          alt={product.name}
+                          className="w-full h-auto max-w-full"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold mb-2">
+                          {product.name}
+                        </h3>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-4">${product.price}</td>
+                  <td className="py-4">
+                    <div className="flex items-center">
+                      <button
+                        className="bg-black text-white px-2 ml-4 mr-2 rounded"
+                        onClick={() =>
+                          handleQuantityChange(
+                            product,
+                            cartItems[product.id] - 1
+                          )
+                        }
+                      >
+                        -
+                      </button>
+                      <span>{cartItems[product.id]}</span>
+                      <button
+                        className="bg-black text-white px-2 ml-2 mr-4 rounded"
+                        onClick={() =>
+                          handleQuantityChange(
+                            product,
+                            cartItems[product.id] + 1
+                          )
+                        }
+                      >
+                        +
+                      </button>
+                    </div>
+                  </td>
+                  <td className="py-4">
+                    $
                     {(
                       Number(cartItems[product.id]) * Number(product.price)
                     ).toFixed(2)}
-                  </p>
-                  <button
-                    className="mt-2 text-red-500"
-                    onClick={() => handleRemove(product)}
-                  >
-                    Remove Item
-                  </button>
-                </div>
-              </div>
-            ))}
-            <div className="text-lg font-semibold mt-4">
-              Grand Total: ${totalCost.toFixed(2)}
-            </div>
+                  </td>
+                  <td className="py-4">
+                    <button
+                      className="text-red-500 m-4 text-lg"
+                      onClick={() => handleRemove(product)}
+                    >
+                      <FaRegTrashAlt />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="text-lg font-semibold mt-4 mb-4">
+            Grand Total: ${totalCost.toFixed(2)}
           </div>
         </div>
       ) : (

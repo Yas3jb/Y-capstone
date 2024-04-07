@@ -110,6 +110,7 @@ export default function Products() {
                 <div className="text-center">
                   <h3 className="text-lg font-semibold mb-1">{product.name}</h3>
                   <p className="mb-1 text-slate-400">{product.category_name}</p>
+                  <div className="mb-1 text-black">{product.rating}</div>
                   <div className="mb-1 text-red-500">$ {product.price}</div>
                   <div className="mb-1 mt-3 flex justify-center">
                     <button

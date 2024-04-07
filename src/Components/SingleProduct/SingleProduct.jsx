@@ -50,7 +50,8 @@ export default function SingleProduct() {
                 {product.name}
               </h1>
 
-              <p className="mb-8"> {product.description}</p>
+              <p className="mb-2"> {product.description}</p>
+              <p className="mb-8"> {product.rating}</p>
               <div className="text-xl text-red-500 font-medium mb-6">
                 $ {product.price}
               </div>
