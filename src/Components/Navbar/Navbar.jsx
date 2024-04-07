@@ -39,7 +39,7 @@ export default function Navbar({ token, setToken, setCategory }) {
 
   return (
     <header>
-      <h1 className="logo-name">E-Shop</h1>
+      <h1 className="logo-name">Y-Shop</h1>
       <div>
         <ul className="nav-links">
           <li>
