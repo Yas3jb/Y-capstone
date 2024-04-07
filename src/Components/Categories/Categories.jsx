@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchCategories } from "../../API/api";
+import { fetchCategories } from "../../API/index.js";
 import { Link } from "react-router-dom";
 
 export default function Categories() {

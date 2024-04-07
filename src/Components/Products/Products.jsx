@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { fetchProducts } from "../../API/api.js";
+import { fetchProducts } from "../../API/index.js";
 import { CartContext } from "../Context/CartContextProvider.jsx";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaPlus } from "react-icons/fa";
@@ -63,7 +63,7 @@ export default function Products() {
   return (
     <>
       {notification && (
-        <p className="bg-green-500 text-white px-4 py-2 fixed top-0 right-0 m-4 z-50">
+        <p className="bg-green-500 text-white px-4 py-2 fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-300">
           {notification}
         </p>
       )}
@@ -95,7 +95,7 @@ export default function Products() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-8 gap-7">
           {products
-            .slice(0, 8)
+            .slice(0, 10)
             .sort(sortProductsByName)
             .map((product) => (
               <div

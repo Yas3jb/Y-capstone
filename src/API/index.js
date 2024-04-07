@@ -3,6 +3,7 @@ import axios from "axios";
 
 // DATA URL
 const Base_URL = "http://localhost:3000/api";
+const URL = "https://e-commerce-api-5fec.onrender.com/api";
 
 // Fetch Products
 export const fetchProducts = async () => {

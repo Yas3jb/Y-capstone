@@ -1,7 +1,7 @@
 // Import createContext, useState, and useEffect
 import { createContext, useState, useEffect } from "react";
 // Import fetchProducts function
-import { fetchProducts } from "../../API/api.js";
+import { fetchProducts } from "../../API/index.js";
 
 // Creating CartContext
 export const CartContext = createContext(null);

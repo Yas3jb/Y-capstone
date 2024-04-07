@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { fetchSingleCategory } from "../../API/api";
+import { fetchSingleCategory } from "../../API/index.js";
 import { FaEye, FaPlus } from "react-icons/fa";
 import { CartContext } from "../Context/CartContextProvider.jsx";
 import { useNavigate } from "react-router-dom";
@@ -36,7 +36,7 @@ export default function SingleCategory() {
   return (
     <>
       {notification && (
-        <p className="bg-green-500 text-white px-4 py-2 fixed top-0 right-0 m-4 z-50">
+        <p className="bg-green-500 text-white px-4 py-2 fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-300">
           {notification}
         </p>
       )}

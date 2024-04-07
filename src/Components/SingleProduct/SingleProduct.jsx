@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { fetchSingleProduct } from "../../API/api.js";
-import { FaPlus } from "react-icons/fa";
+import { fetchSingleProduct } from "../../API/index.js";
 import { CartContext } from "../Context/CartContextProvider.jsx";
 
 export default function SingleProduct() {

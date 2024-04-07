@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchUser, Authenticate } from "../../API/api.js";
+import { fetchUser, Authenticate } from "../../API/index.js";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
