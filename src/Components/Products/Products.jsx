@@ -70,7 +70,7 @@ export default function Products() {
       <Banner />
       <Categories />
       <div className="container mx-auto">
-        <h2 className="text-indigo-300 text-3xl font-bold mt-8 mb-8 text-center underline-offset-8">
+        <h2 className="text-black text-3xl font-bold mt-8 mb-8 text-center underline-offset-8">
           {" "}
           View All Products
         </h2>
@@ -87,7 +87,7 @@ export default function Products() {
           </select>
           <button
             onClick={handleOrderChange}
-            className="ml-4 px-2 py-1 bg-indigo-300 text-white rounded-md hover:bg-indigo-700 scale-105 duration-300 focus:outline-none"
+            className="ml-4 px-2 py-1 bg-indigo-400 text-white rounded-md hover:bg-indigo-600 scale-105 duration-300 focus:outline-none"
           >
             Sort {sortOrder === "asc" ? "A to Z" : "Z to A"}
           </button>

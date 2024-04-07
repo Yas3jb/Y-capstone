@@ -17,14 +17,14 @@ export default function Categories() {
 
   return (
     <div>
-      <h1 className="text-indigo-300 text-3xl font-bold mt-36 text-center underline-offset-8">
+      <h1 className="text-black text-3xl font-bold mt-36 text-center underline-offset-8">
         Explore All Categories
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 my-10">
         {categories.map((category) => (
           <div
             key={category.id}
-            className="py-8 pl-9 my-5 bg-gradient-to-br from-pink-600 via-purple-500 to-transparent text-white p-36  rounded-3xl relative h-[220px] flex flex-col justify-left items-left tracking-widest"
+            className="py-8 pl-9 my-5 bg-gradient-to-b from-indigo-600 text-white p-36  rounded-3xl relative h-[220px] flex flex-col justify-left items-left tracking-widest"
           >
             <div>
               <div className="my-5">
@@ -33,7 +33,7 @@ export default function Categories() {
                 </p>
                 <Link
                   to={`/categories/${category.name}`}
-                  className=" text-indigo-300 cursor-pointer hover:text-white scale-105 duration-300 py-2 px-1 "
+                  className=" text-black cursor-pointer hover:text-white scale-105 duration-300 py-2 px-1 "
                 >
                   Browse
                 </Link>

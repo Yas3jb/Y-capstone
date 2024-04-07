@@ -41,7 +41,7 @@ export default function SingleCategory() {
         </p>
       )}
       <div className="container mx-auto mb-8">
-        <h1 className="text-indigo-300 text-3xl font-bold mt-32 mb-8 text-center underline-offset-8">
+        <h1 className="text-black text-3xl font-bold mt-32 mb-8 text-center underline-offset-8">
           Welcome to the {name} category page. Explore products related to{" "}
           {name}
         </h1>
