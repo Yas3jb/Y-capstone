@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { CartContext } from "../Context/CartContextProvider.jsx";
 import { FaRegTrashAlt } from "react-icons/fa";
+import Checkout from "../Checkout/Checkout.jsx";
 
 export default function Cart() {
   const { cart, cartItems, removeFromCart, updateQuantity } =
@@ -110,12 +111,13 @@ export default function Cart() {
           <div className="text-lg font-semibold mt-4 mb-4">
             Grand Total: ${totalCost.toFixed(2)}
           </div>
+          <Checkout />
         </div>
       ) : (
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">No Items in the Cart</h1>
           <a href="/" className="text-blue-500 hover:underline">
-            Go Back
+            Navigate back to the homepage
           </a>
         </div>
       )}

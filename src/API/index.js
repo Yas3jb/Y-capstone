@@ -120,3 +120,26 @@ export const fetchCart = async () => {
     console.error(err);
   }
 };
+
+export const fetchCheckout = async (cartItems) => {
+  try {
+    const response = await axios.post(
+      `${Base_URL}/checkout`,
+      {
+        items: cartItems,
+      },
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    if (response.status === 200) {
+      const { url } = response.data;
+      window.location.href = url;
+    } else {
+      console.error("Error occurred during checkout. Status:", response.status);
+    }
+  } catch (err) {
+    console.error("Error occurred during checkout:", err.message);
+  }
+};

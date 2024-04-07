@@ -12,6 +12,8 @@ import Cart from "./Components/Cart/Cart";
 import { CartContextProvider } from "./Components/Context/CartContextProvider";
 import Footer from "./Components/Footer/Footer";
 import SingleCategory from "./Components/SingleCategory/SingleCategory";
+import Success from "./Components/Success/Success";
+import Cancel from "./Components/Cancel/Cancel";
 
 function App() {
   // State variable to store authentication token
@@ -33,6 +35,8 @@ function App() {
           />
           <Route path="/cart" element={<Cart />} />
           <Route path="/categories/:name" element={<SingleCategory />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/cancel" element={<Cancel />} />
         </Routes>
         <Footer />
       </CartContextProvider>
