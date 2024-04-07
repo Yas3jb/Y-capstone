@@ -33,7 +33,7 @@ export default function Navbar({ token, setToken }) {
         {token ? (
           <button
             onClick={handleLogout}
-            className="text-slate-950 hover:text-indigo-600 transition-all duration-300"
+            className="text-gray-500 hover:text-indigo-600 transition-all duration-300"
           >
             Logout
           </button>

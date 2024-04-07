@@ -7,9 +7,11 @@ const Footer = () => {
         <div className="w-full md:w-1/3 mb-8">
           <h2 className="text-xl font-semibold mb-4">About Us</h2>
           <p className="text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            convallis libero eget risus feugiat consequat. Morbi eu mauris vel
-            risus suscipit cursus.
+            Welcome to our e-commerce platform! We are dedicated to providing
+            the best shopping experience for our customers. Browse through our
+            wide range of products and find exactly what you need. Our mission
+            is to make online shopping convenient, affordable, and enjoyable for
+            everyone.
           </p>
         </div>
         <div className="w-full md:w-1/3 mb-8">
