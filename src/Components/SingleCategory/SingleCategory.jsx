@@ -6,12 +6,15 @@ import { CartContext } from "../Context/CartContextProvider.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function SingleCategory() {
+  // State to store products related to the category
   const [categoryProducts, setCategoryProducts] = useState([]);
+  // Accessing addToCart function from CartContext
   const { addToCart } = useContext(CartContext);
   const [notification, setNotification] = useState("");
   const { name } = useParams();
   const navigate = useNavigate();
 
+  // Fetch products related to the category
   useEffect(() => {
     fetchSingleCategory(name)
       .then((products) => {
@@ -42,8 +45,7 @@ export default function SingleCategory() {
       )}
       <div className="container mx-auto mb-8">
         <h1 className="text-black text-3xl font-bold mt-32 mb-8 text-center underline-offset-8">
-          Welcome to the {name} category page. Explore products related to{" "}
-          {name}
+          Explore products related to {name}
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">

@@ -4,11 +4,14 @@ import { fetchSingleProduct } from "../../API/index.js";
 import { CartContext } from "../Context/CartContextProvider.jsx";
 
 export default function SingleProduct() {
+  // State to store the product details
   const [product, setProduct] = useState([]);
+  // Accessing addToCart function from CartContext
   const { addToCart } = useContext(CartContext);
   const [notification, setNotification] = useState("");
   const { id } = useParams();
 
+  // Fetch product details
   useEffect(() => {
     fetchSingleProduct(id)
       .then((product) => {
@@ -19,6 +22,7 @@ export default function SingleProduct() {
       });
   }, [id]);
 
+  // Handle adding product to cart
   const handleAddToCart = (product) => {
     addToCart(product);
     const message = `${product.name} has been added to the cart!`;

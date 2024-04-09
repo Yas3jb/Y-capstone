@@ -3,8 +3,10 @@ import { fetchCategories } from "../../API/index.js";
 import { Link } from "react-router-dom";
 
 export default function Categories() {
+  // State variables
   const [categories, setCategories] = useState([]);
 
+  // Fetch categories from the API
   useEffect(() => {
     fetchCategories()
       .then((categories) => {
@@ -24,11 +26,11 @@ export default function Categories() {
         {categories.map((category) => (
           <div
             key={category.id}
-            className="py-8 pl-9 my-5 bg-gradient-to-b from-indigo-600 text-white p-36  rounded-3xl relative h-[220px] flex flex-col justify-left items-left tracking-widest"
+            className="py-8 bg-gradient-to-b from-indigo-600 text-white p-36  rounded-3xl relative h-[220px] flex flex-col justify-center items-center "
           >
             <div>
               <div className="my-5">
-                <p className="text-5xl xl:text-5xl font-bold mb-10 text-left ">
+                <p className="text-5xl font-bold mb-5 text-center ">
                   {category.name}
                 </p>
                 <Link

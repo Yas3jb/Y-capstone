@@ -3,6 +3,7 @@ import { createUser } from "../../API/index.js";
 import { Link } from "react-router-dom";
 
 export default function Register() {
+  // State variables
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ export default function Register() {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

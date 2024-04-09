@@ -4,10 +4,13 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import Checkout from "../Checkout/Checkout.jsx";
 
 export default function Cart() {
+  // Accessing the cart state functions from the CartContext
   const { cart, cartItems, removeFromCart, updateQuantity } =
     useContext(CartContext);
+  // State variables
   const [totalCost, setTotalCost] = useState(0);
 
+  // Calculate total cost whenever cart items or quantities change
   useEffect(() => {
     setTotalCost(
       cart.reduce(
@@ -18,10 +21,12 @@ export default function Cart() {
     );
   }, [cartItems, cart]);
 
+  // Function to handle removing a product from the cart
   const handleRemove = (product) => {
     removeFromCart(product);
   };
 
+  // Function to handle changing quantity of a product in the cart
   const handleQuantityChange = (product, newQuantity) => {
     updateQuantity(product, newQuantity);
   };

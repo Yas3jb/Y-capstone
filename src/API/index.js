@@ -121,6 +121,7 @@ export const fetchCart = async () => {
   }
 };
 
+// fetch checkout (stripe)
 export const fetchCheckout = async (cartItems) => {
   try {
     const response = await axios.post(

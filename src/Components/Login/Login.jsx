@@ -3,23 +3,28 @@ import { fetchUser, Authenticate } from "../../API/index.js";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  // State variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
+  // State variables to store email, password, error message, and success message
   useEffect(() => {
     Authenticate();
   }, []);
 
+  // Function to handle login submission
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await fetchUser({ email, password });
       if (response && response.status === 200) {
+        // If authentication successful, store token in local storage
         const { token } = response.data;
         window.localStorage.setItem("token", token);
+        // Authenticate user
         Authenticate();
         setSuccessMessage("Login successful. Redirecting...");
         setTimeout(() => {

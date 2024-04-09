@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // Import createContext, useState, and useEffect
 import { createContext, useState, useEffect } from "react";
 // Import fetchProducts function

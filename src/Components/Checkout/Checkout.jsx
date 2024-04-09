@@ -3,11 +3,14 @@ import { CartContext } from "../Context/CartContextProvider.jsx";
 import { fetchCheckout } from "../../API/index.js";
 
 export default function Checkout() {
+  // Accessing cart items from the CartContext
   const { cartItems } = useContext(CartContext);
 
+  // Function to handle checkout process
   const handleCheckout = async () => {
     try {
-      await fetchCheckout(Object.keys(cartItems)); // Pass only the keys (product IDs) of cartItems
+      // Call API to initiate checkout with cart items
+      await fetchCheckout(Object.keys(cartItems));
     } catch (error) {
       console.error("Error occurred during checkout:", error);
     }
