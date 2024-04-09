@@ -71,7 +71,6 @@ export default function Products() {
       <Categories />
       <div className="container mx-auto">
         <h2 className="text-black text-3xl font-bold mt-8 mb-8 text-center underline-offset-8">
-          {" "}
           View All Products
         </h2>
         <div className="flex items-center justify-center mb-5">
@@ -100,6 +99,8 @@ export default function Products() {
             .map((product) => (
               <div
                 key={product.id}
+                data-aos="fade-up"
+                data-aos-delay={product.aosDelyay}
                 className="border p-7 rounded-lg hover:shadow-xl transition duration-300 relative"
               >
                 <img

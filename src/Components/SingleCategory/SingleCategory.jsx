@@ -52,6 +52,8 @@ export default function SingleCategory() {
           {categoryProducts.map((product) => (
             <div
               key={product.id}
+              data-aos="fade-up"
+              data-aos-delay={product.aosDelyay}
               className="border p-7 rounded-lg hover:shadow-xl transition duration-300 relative"
             >
               <img
