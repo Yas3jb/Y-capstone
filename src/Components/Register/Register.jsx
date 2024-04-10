@@ -35,7 +35,7 @@ export default function Register() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="max-w-3xl w-full p-8 space-y-8 bg-white shadow-md rounded-md">
+      <div className="max-w-3xl w-full p-4 md:p-8 lg:p-12 space-y-4 md:space-y-8 bg-white shadow-md rounded-md">
         {successMessage && (
           <p className="text-green-500 text-center">{successMessage}</p>
         )}
@@ -48,7 +48,7 @@ export default function Register() {
           </h2>
         </div>
         <form
-          className=" flex flex-col items-center gap-3 "
+          className="flex flex-col md:flex-row md:justify-center md:items-center md:gap-3"
           onSubmit={handleSubmit}
         >
           <input
@@ -56,31 +56,31 @@ export default function Register() {
             value={firstName}
             placeholder="First Name"
             onChange={(e) => setFirstName(e.target.value)}
-            className="text-center rounded-md border-[#0a4abf] border-2"
+            className="text-center rounded-md border-[#0a4abf] border-2 mb-4 md:mb-0 md:w-64"
           />
           <input
             type="text"
             value={lastName}
             placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
-            className="text-center rounded-md border-[#0a4abf] border-2"
+            className="text-center rounded-md border-[#0a4abf] border-2 mb-4 md:mb-0 md:w-64"
           />
           <input
             type="email"
             value={email}
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
-            className="text-center rounded-md border-[#0a4abf] border-2"
+            className="text-center rounded-md border-[#0a4abf] border-2 mb-4 md:mb-0 md:w-64"
           />
           <input
             type="password"
             value={password}
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
-            className="text-center rounded-md border-[#0a4abf] border-2"
+            className="text-center rounded-md border-[#0a4abf] border-2 mb-4 md:mb-0 md:w-64"
           />
           <button
-            className="px-6 flex justify-start items-center text-center rounded-md text-white bg-[#0a4abf] hover:bg-[#f6eb16] transition-all duration-300 cursor-pointer "
+            className="px-6 py-2 flex justify-center items-center text-center rounded-md text-white bg-[#0a4abf] hover:bg-[#f6eb16] transition-all duration-300 cursor-pointer md:w-auto"
             disabled={!firstName || !lastName || !email || !password}
           >
             Register

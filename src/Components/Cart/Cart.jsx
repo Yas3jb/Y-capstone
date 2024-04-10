@@ -53,7 +53,7 @@ export default function Cart() {
                 <tr key={i} className="border-b border-gray-200">
                   <td className="py-4">
                     <div className="flex items-center">
-                      <div className="w-1/4 mr-4">
+                      <div className="w-1/2 md:w-1/2 mx-2">
                         <img
                           src={product.imageurl}
                           alt={product.name}
@@ -61,7 +61,7 @@ export default function Cart() {
                         />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">
+                        <h3 className="text-sm mx-2 font-semibold mb-2">
                           {product.name}
                         </h3>
                       </div>
@@ -119,7 +119,7 @@ export default function Cart() {
           <Checkout />
         </div>
       ) : (
-        <div className="text-center">
+        <div className="text-center py-8 mb-20">
           <h1 className="text-2xl font-bold mb-4 pt-8">No Items in the Cart</h1>
           <a href="/" className="text-blue-500 hover:underline">
             Navigate back to the homepage

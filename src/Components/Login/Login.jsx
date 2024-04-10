@@ -41,7 +41,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="max-w-2xl w-full p-40 space-y-8 bg-white shadow-md rounded-md">
+      <div className="max-w-2xl w-full p-4 md:p-8 lg:p-12 space-y-4 md:space-y-8 bg-white shadow-md rounded-md">
         {errorMessage && (
           <p className="text-red-500 text-center">{errorMessage}</p>
         )}
@@ -54,7 +54,7 @@ export default function Login() {
           </h2>
         </div>
         <form
-          className=" flex justify-center items-center gap-8 "
+          className="flex flex-col md:flex-row md:justify-center md:items-center md:gap-8"
           onSubmit={handleLogin}
         >
           <input
@@ -62,17 +62,17 @@ export default function Login() {
             value={email}
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
-            className="text-center rounded-md border-[#0a4abf] border-2"
+            className="text-center rounded-md border-[#0a4abf] border-2 mb-4 md:mb-0 md:w-64"
           />
           <input
             type="password"
             value={password}
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
-            className="text-center rounded-md border-[#0a4abf] border-2"
+            className="text-center rounded-md border-[#0a4abf] border-2 mb-4 md:mb-0 md:w-64"
           />
           <button
-            className="px-3 flex justify-start items-center text-center rounded-md text-white bg-[#0a4abf] hover:bg-[#f6eb16] transition-all duration-300 cursor-pointer  "
+            className="px-3 py-2 flex justify-center items-center text-center rounded-md text-white bg-[#0a4abf] hover:bg-[#f6eb16] transition-all duration-300 cursor-pointer md:w-auto"
             disabled={!email || !password}
           >
             Login

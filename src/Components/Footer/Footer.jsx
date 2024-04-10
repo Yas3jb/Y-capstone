@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="w-full md:w-1/3 mb-8">
           <h2 className="text-xl font-semibold mb-4">Quick Links</h2>
           <ul className="text-sm">
-            <li className="mb-2">
+            <li className="mb-1">
               <a
                 href="/"
                 className="text-white hover:text-yellow-300 transition-all duration-300"
@@ -31,7 +31,7 @@ const Footer = () => {
                 Home
               </a>
             </li>
-            <li className="mb-2">
+            <li className="mb-1">
               <a
                 href="/products"
                 className="text-white hover:text-yellow-300 transition-all duration-300"
