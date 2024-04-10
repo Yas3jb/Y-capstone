@@ -71,7 +71,7 @@ export default function Cart() {
                   <td className="py-4">
                     <div className="flex items-center">
                       <button
-                        className="bg-black text-white px-2 ml-4 mr-2 rounded"
+                        className="bg-[#0a4abf] hover:bg-[#f6eb16] transition-all duration-300 text-white px-2 ml-4 mr-2 rounded"
                         onClick={() =>
                           handleQuantityChange(
                             product,
@@ -83,7 +83,7 @@ export default function Cart() {
                       </button>
                       <span>{cartItems[product.id]}</span>
                       <button
-                        className="bg-black text-white px-2 ml-2 mr-4 rounded"
+                        className="bg-[#0a4abf] hover:bg-[#f6eb16] transition-all duration-300 text-white px-2 ml-2 mr-4 rounded"
                         onClick={() =>
                           handleQuantityChange(
                             product,

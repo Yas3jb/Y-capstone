@@ -47,7 +47,6 @@ export const createUser = async (credentials) => {
       console.error("Server error:", error.response.data);
       throw new Error("User already exists. Please login.");
     } else {
-      // Something else happened (e.g., request setup error)
       console.error("Error:", error.message);
       throw new Error("Error occurred. Please try again.");
     }
@@ -121,9 +120,10 @@ export const fetchCart = async () => {
   }
 };
 
-// fetch checkout (stripe)
+// Function to initiate checkout process
 export const fetchCheckout = async (cartItems) => {
   try {
+    // Send a POST request to the checkout endpoint with cart items
     const response = await axios.post(
       `${Base_URL}/checkout`,
       {
@@ -133,7 +133,8 @@ export const fetchCheckout = async (cartItems) => {
         headers: { "Content-Type": "application/json" },
       }
     );
-
+    // If the request is successful (status code 200)
+    //redirect the user to the checkout URL
     if (response.status === 200) {
       const { url } = response.data;
       window.location.href = url;

@@ -61,7 +61,7 @@ export default function SingleProduct() {
               </div>
               <button
                 onClick={() => handleAddToCart(product)}
-                className="bg-indigo-400 py-4 px-8 text-white hover:bg-indigo-600 scale-105 duration-300"
+                className="bg-[#0a4abf] py-4 px-8 text-white hover:bg-[#f6eb16] scale-105 duration-300"
               >
                 Add to Cart
               </button>

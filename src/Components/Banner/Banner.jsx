@@ -15,7 +15,7 @@ export default function Banner() {
   }, []);
 
   return (
-    <section className="bg-indigo-600 to-transparent text-white p-20 mt-10 sm:p-8 md:p-36 flex flex-col sm:flex-row items-center justify-center">
+    <section className="bg-[#0a4abf] text-white p-20 mt-10 sm:p-8 md:p-36 flex flex-col sm:flex-row items-center justify-center">
       <div className="mx-3 text-center sm:text-left sm:w-1/2">
         <h1
           data-aos="zoom-out"
@@ -28,7 +28,7 @@ export default function Banner() {
             data-aos="zoom-out"
             data-aos-duration="500"
             data-aos-once="true"
-            className="text-sm sm:text-2xl md:text-4xl text-indigo-300"
+            className="text-sm sm:text-2xl md:text-4xl text-yellow-300"
           >
             New Products
           </span>

@@ -56,31 +56,31 @@ export default function Register() {
             value={firstName}
             placeholder="First Name"
             onChange={(e) => setFirstName(e.target.value)}
-            className="text-center rounded-md border-indigo-100 border-2"
+            className="text-center rounded-md border-[#0a4abf] border-2"
           />
           <input
             type="text"
             value={lastName}
             placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
-            className="text-center rounded-md border-indigo-100 border-2"
+            className="text-center rounded-md border-[#0a4abf] border-2"
           />
           <input
             type="email"
             value={email}
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
-            className="text-center rounded-md border-indigo-100 border-2"
+            className="text-center rounded-md border-[#0a4abf] border-2"
           />
           <input
             type="password"
             value={password}
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
-            className="text-center rounded-md border-indigo-100 border-2"
+            className="text-center rounded-md border-[#0a4abf] border-2"
           />
           <button
-            className="px-6 flex justify-start items-center text-center rounded-md text-white bg-indigo-600 cursor-pointer  "
+            className="px-6 flex justify-start items-center text-center rounded-md text-white bg-[#0a4abf] hover:bg-[#f6eb16] transition-all duration-300 cursor-pointer "
             disabled={!firstName || !lastName || !email || !password}
           >
             Register

@@ -26,7 +26,7 @@ export default function Categories() {
         {categories.map((category) => (
           <div
             key={category.id}
-            className="py-8 bg-gradient-to-b from-indigo-600 text-white p-36  rounded-3xl relative h-[220px] flex flex-col justify-center items-center "
+            className="py-8 bg-gradient-to-b from-[#0a4abf] text-white p-36  rounded-3xl relative h-[220px] flex flex-col justify-center items-center "
           >
             <div>
               <div className="my-5">
@@ -35,7 +35,7 @@ export default function Categories() {
                 </p>
                 <Link
                   to={`/categories/${category.name}`}
-                  className=" text-black cursor-pointer hover:text-white scale-105 duration-300 py-2 px-1 "
+                  className=" text-black cursor-pointer hover:text-[#f6eb16] scale-105 duration-300 py-2 px-1 "
                 >
                   Browse
                 </Link>

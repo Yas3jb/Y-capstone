@@ -86,7 +86,7 @@ export default function Products() {
           </select>
           <button
             onClick={handleOrderChange}
-            className="ml-4 px-2 py-1 bg-indigo-400 text-white rounded-md hover:bg-indigo-600 scale-105 duration-300 focus:outline-none"
+            className="ml-4 px-2 py-1 bg-[#0a4abf] text-white rounded-md hover:bg-[#f6eb16] scale-105 duration-300 focus:outline-none"
           >
             Sort {sortOrder === "asc" ? "A to Z" : "Z to A"}
           </button>
@@ -116,13 +116,13 @@ export default function Products() {
                   <div className="mb-1 mt-3 flex justify-center">
                     <button
                       onClick={() => handleAddToCart(product)}
-                      className="flex justify-center items-center text-black w-12 h-12 rounded-full hover:bg-indigo-300 transition-all duration-300"
+                      className="flex justify-center items-center text-black w-12 h-12 rounded-full hover:bg-[#f6eb16] transition-all duration-300"
                     >
                       <FaPlus />
                     </button>
                     <button
                       onClick={() => navigate(`/products/${product.id}`)}
-                      className="w-12 h-12 bg-white flex justify-center items-center text-black rounded-full hover:bg-indigo-300 transition-all duration-300"
+                      className="w-12 h-12 bg-white flex justify-center items-center text-black rounded-full hover:bg-[#f6eb16] transition-all duration-300"
                     >
                       <FaEye />
                     </button>

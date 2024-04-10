@@ -8,7 +8,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-indigo-600 text-white py-10 text-center">
+    <footer className="bg-[#0a4abf] text-white py-10 text-center">
       <div className="container mx-auto flex flex-wrap justify-between">
         <div className="w-full md:w-1/3 mb-8">
           <h2 className="text-xl font-semibold mb-4">About Us</h2>
@@ -26,7 +26,7 @@ const Footer = () => {
             <li className="mb-2">
               <a
                 href="/"
-                className="text-white hover:text-indigo-300 transition-all duration-300"
+                className="text-white hover:text-yellow-300 transition-all duration-300"
               >
                 Home
               </a>
@@ -34,7 +34,7 @@ const Footer = () => {
             <li className="mb-2">
               <a
                 href="/products"
-                className="text-white hover:text-indigo-300 transition-all duration-300"
+                className="text-white hover:text-yellow-300 transition-all duration-300"
               >
                 Products
               </a>
@@ -61,7 +61,7 @@ const Footer = () => {
             href="https://www.linkedin.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white mx-2 hover:text-indigo-300 transition-all duration-300"
+            className="text-white mx-2 hover:text-yellow-300 transition-all duration-300"
           >
             <FaLinkedinIn />
           </a>
@@ -69,7 +69,7 @@ const Footer = () => {
             href="https://github.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white mx-2 hover:text-indigo-300 transition-all duration-300"
+            className="text-white mx-2 hover:text-yellow-300 transition-all duration-300"
           >
             <FaGithub />
           </a>
@@ -77,7 +77,7 @@ const Footer = () => {
             href="https://www.instagram.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white mx-2 hover:text-indigo-300 transition-all duration-300"
+            className="text-white mx-2 hover:text-yellow-300 transition-all duration-300"
           >
             <FaInstagram />
           </a>
