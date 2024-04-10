@@ -120,7 +120,7 @@ export default function Cart() {
         </div>
       ) : (
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">No Items in the Cart</h1>
+          <h1 className="text-2xl font-bold mb-4 pt-8">No Items in the Cart</h1>
           <a href="/" className="text-blue-500 hover:underline">
             Navigate back to the homepage
           </a>

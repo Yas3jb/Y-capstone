@@ -33,21 +33,21 @@ export default function Navbar({ token, setToken }) {
         {token ? (
           <button
             onClick={handleLogout}
-            className="text-gray-500 hover:text-indigo-600 transition-all duration-300"
+            className="text-gray-500 hover:text-yellow-300 transition-all duration-300"
           >
             Logout
           </button>
         ) : (
           <Link
             to="/login"
-            className="text-slate-500 text-2xl hover:text-indigo-600 transition-all duration-300"
+            className="text-slate-500 text-2xl hover:text-yellow-300 transition-all duration-300"
           >
             <MdOutlineAccountCircle />
           </Link>
         )}
         <Link
           to="/cart"
-          className="text-slate-500 text-2xl hover:text-indigo-600 relative transition-all duration-300"
+          className="text-slate-500 text-2xl hover:text-yellow-300 relative transition-all duration-300"
         >
           <IoCartOutline />
           {/* Display cart count */}
