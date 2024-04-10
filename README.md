@@ -1,6 +1,6 @@
 # E-Commerce Website
 
-This is an e-commerce website built using React.js and Tailwind CSS. It allows users to browse through various products, view product details and add products to cart.
+This is an e-commerce website built using React.js and Tailwind CSS. It allows users to browse through various products, view product details, sort by name and add products to cart.
 
 ## Description
 
