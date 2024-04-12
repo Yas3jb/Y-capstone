@@ -2,7 +2,8 @@
 import { createContext, useState } from "react";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/api";
+// DATA URL
+const URL = "https://e-commerce-api-5fec.onrender.com/api";
 
 export const CartContext = createContext(null);
 
@@ -16,7 +17,7 @@ export const CartContextProvider = (props) => {
   const fetchCart = async (id) => {
     const token = window.localStorage.getItem("token");
     try {
-      const response = await axios.get(`${BASE_URL}/cart/${id}`, {
+      const response = await axios.get(`${URL}/cart/${id}`, {
         headers: {
           Authorization: token,
         },
@@ -30,7 +31,7 @@ export const CartContextProvider = (props) => {
   const deleteCart = async (id) => {
     const token = window.localStorage.getItem("token");
     try {
-      await axios.delete(`${BASE_URL}/cart/${id}`, {
+      await axios.delete(`${URL}/cart/${id}`, {
         headers: {
           Authorization: token,
         },
@@ -57,7 +58,7 @@ export const CartContextProvider = (props) => {
     const token = window.localStorage.getItem("token");
     try {
       await axios.post(
-        `${BASE_URL}/cart`,
+        `${URL}/cart`,
         {
           product_id: productId,
           quantity,
@@ -80,7 +81,7 @@ export const CartContextProvider = (props) => {
     const token = window.localStorage.getItem("token");
     try {
       await axios.put(
-        `${BASE_URL}/cart/${cartId}`,
+        `${URL}/cart/${cartId}`,
         { quantity: newQuantity },
         {
           headers: {
