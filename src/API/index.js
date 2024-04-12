@@ -3,11 +3,12 @@ import axios from "axios";
 
 // DATA URL
 const URL = "https://e-commerce-api-5fec.onrender.com/api";
+const BASE_URL = "http://localhost:3000/api";
 
 // Fetch Products
 export const fetchProducts = async () => {
   try {
-    const response = await axios.get(`${URL}/products`);
+    const response = await axios.get(`${BASE_URL}/products`);
     return response.data;
   } catch (err) {
     console.error(err);
@@ -17,7 +18,7 @@ export const fetchProducts = async () => {
 // Fetch Single Product
 export const fetchSingleProduct = async (id) => {
   try {
-    const response = await axios.get(`${URL}/products/${id}`);
+    const response = await axios.get(`${BASE_URL}/products/${id}`);
     return response.data;
   } catch (err) {
     console.error(err);
@@ -27,11 +28,15 @@ export const fetchSingleProduct = async (id) => {
 // Create User
 export const createUser = async (credentials) => {
   try {
-    const response = await axios.post(`${URL}/auth/register`, credentials, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.post(
+      `${BASE_URL}/auth/register`,
+      credentials,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const { token } = response.data;
     window.localStorage.setItem("token", token);
@@ -51,7 +56,7 @@ export const createUser = async (credentials) => {
 // Fetch user
 export const fetchUser = async (credentials) => {
   try {
-    const response = await axios.post(`${URL}/auth/login`, credentials, {
+    const response = await axios.post(`${BASE_URL}/auth/login`, credentials, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -73,7 +78,7 @@ export const Authenticate = async () => {
   const token = window.localStorage.getItem("token");
   if (token) {
     try {
-      await axios.get(`${URL}/auth/me`, {
+      await axios.get(`${BASE_URL}/auth/me`, {
         headers: {
           Authorization: token,
         },
@@ -87,7 +92,7 @@ export const Authenticate = async () => {
 // fetch Categories
 export const fetchCategories = async () => {
   try {
-    const response = await axios.get(`${URL}/categories`);
+    const response = await axios.get(`${BASE_URL}/categories`);
     return response.data;
   } catch (err) {
     console.error(err);
@@ -97,18 +102,7 @@ export const fetchCategories = async () => {
 // Fetch Single Category
 export const fetchSingleCategory = async (name) => {
   try {
-    const response = await axios.get(`${URL}/categories/${name}`);
-    return response.data;
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-// fetch cart
-export const fetchCart = async () => {
-  try {
-    const response = await axios.get(`${URL}/cart`);
-    console.log(response);
+    const response = await axios.get(`${BASE_URL}/categories/${name}`);
     return response.data;
   } catch (err) {
     console.error(err);
@@ -120,7 +114,7 @@ export const fetchCheckout = async (cartItems) => {
   try {
     // Send a POST request to the checkout endpoint with cart items
     const response = await axios.post(
-      `${URL}/checkout`,
+      `${BASE_URL}/checkout`,
       {
         items: cartItems,
       },

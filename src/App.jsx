@@ -33,7 +33,10 @@ function App() {
             path="/login"
             element={<Login setToken={setToken} token={token} />}
           />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={<Cart token={token} setToken={setToken} />}
+          />
           <Route path="/categories/:name" element={<SingleCategory />} />
           <Route path="/success" element={<Success />} />
           <Route path="/cancel" element={<Cancel />} />

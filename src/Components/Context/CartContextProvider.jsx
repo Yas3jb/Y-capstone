@@ -1,99 +1,120 @@
 /* eslint-disable react/prop-types */
-// Import createContext, useState, and useEffect
-import { createContext, useState, useEffect } from "react";
-// Import fetchProducts function
-import { fetchProducts } from "../../API/index.js";
+import { createContext, useState } from "react";
+import axios from "axios";
 
-// Creating CartContext
+const BASE_URL = "http://localhost:3000/api";
+
 export const CartContext = createContext(null);
 
-// CartContextProvider component
 export const CartContextProvider = (props) => {
-  // State variables to store cart items and cart
+  // State to store the cart items
   const [cart, setCart] = useState([]);
-  const [cartItems, setCartItems] = useState({});
+  // State to store the total count of items in the cart
   const [cartCount, setCartCount] = useState(0);
 
-  // Effect hook to fetch initial cart data
-  useEffect(() => {
-    const getCart = async () => {
-      const PRODUCTS = await fetchProducts();
-      let cart = {};
-      // Initialize cartItems with product ids as keys
-      PRODUCTS.forEach((product) => {
-        cart[product.id] = 0;
+  // fetch cart data from the server
+  const fetchCart = async (id) => {
+    const token = window.localStorage.getItem("token");
+    try {
+      const response = await axios.get(`${BASE_URL}/cart/${id}`, {
+        headers: {
+          Authorization: token,
+        },
       });
-      setCartItems(cart);
-    };
-    getCart();
-  }, []);
-
-  // Effect hook to store cart data in local storage
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    // Update cart count whenever cartItems change
-    setCartCount(Object.values(cartItems).reduce((acc, curr) => acc + curr, 0));
-  }, [cartItems]);
-
-  // Function to add item to cart
-  const addToCart = (item) => {
-    if (!cart.find((cartItem) => cartItem.id === item.id)) {
-      setCart([...cart, item]);
+      return response.data;
+    } catch (err) {
+      console.error(err);
     }
-    setCartItems((prev) => ({ ...prev, [item.id]: prev[item.id] + 1 }));
   };
-
-  // Function to remove item from cart
-  const removeFromCart = (item) => {
-    if (cartItems[item.id] === 1) {
-      // If the item's count is 1, remove it from cartItems
-      const updatedCartItems = { ...cartItems };
-      delete updatedCartItems[item.id];
-      setCartItems(updatedCartItems);
-    } else {
-      // Otherwise, decrease the count
-      setCartItems((prev) => ({ ...prev, [item.id]: prev[item.id] - 1 }));
+  // delete an item from the cart
+  const deleteCart = async (id) => {
+    const token = window.localStorage.getItem("token");
+    try {
+      await axios.delete(`${BASE_URL}/cart/${id}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      const updatedCart = await fetchCart();
+      setCart(updatedCart);
+      updateCartCount(updatedCart);
+    } catch (error) {
+      console.error("Error removing item from cart:", error);
     }
-    // Update cart by filtering out the item
-    setCart(cart.filter((i) => i !== item));
   };
 
-  // Function to calculate total cost of items in cart
-  const getTotalCost = () => {
-    return cart.reduce(
-      (acc, currentVal) =>
-        acc + Number(currentVal.price) * cartItems[currentVal.id],
-      0
-    );
+  const removeFromCart = async (cart_id) => {
+    try {
+      // calling deleteCart function to remove item
+      await deleteCart(cart_id);
+    } catch (error) {
+      console.error("Error removing item from cart:", error);
+    }
   };
 
-  // Function to reset cart
+  // add an item to the cart
+  const addToCart = async (productId, quantity) => {
+    const token = window.localStorage.getItem("token");
+    try {
+      await axios.post(
+        `${BASE_URL}/cart`,
+        {
+          product_id: productId,
+          quantity,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      const updatedCart = await fetchCart(productId, quantity);
+      setCart(updatedCart);
+    } catch (error) {
+      console.error("Error adding item to cart:", error);
+    }
+  };
+
+  // add an item to the cart
+  const updateQuantity = async (cartId, newQuantity) => {
+    const token = window.localStorage.getItem("token");
+    try {
+      await axios.put(
+        `${BASE_URL}/cart/${cartId}`,
+        { quantity: newQuantity },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      const updatedCart = await fetchCart();
+      setCart(updatedCart);
+      updateCartCount(updatedCart);
+    } catch (error) {
+      console.error("Error updating quantity:", error);
+    }
+  };
+  // update the total count of items in the cart
+  const updateCartCount = (updatedCart) => {
+    const count = updatedCart.reduce((total, item) => total + item.quantity, 0);
+    setCartCount(count);
+  };
+
+  // reset the cart
   const resetCart = () => {
-    setCartItems({});
     setCart([]);
   };
 
-  // Function to Update Quantity from inside the cart
-  const updateQuantity = (product, newQuantity) => {
-    setCartItems((prev) => ({
-      ...prev,
-      [product.id]: newQuantity >= 0 ? newQuantity : 0,
-    }));
-  };
-
-  // Context value containing cart state and related functions
   const contextValue = {
     cart,
-    cartItems,
-    addToCart,
     removeFromCart,
-    getTotalCost,
+    addToCart,
     resetCart,
     cartCount,
     updateQuantity,
   };
 
-  // Providing context value to children components
   return (
     <CartContext.Provider value={contextValue}>
       {props.children}
