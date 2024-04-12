@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Import useState
+import { useState } from "react";
+// Import Routes and Route
+import { Routes, Route } from "react-router-dom";
+// Import Components
+import Products from "./Components/Products/Products";
+import SingleProduct from "./Components/SingleProduct/SingleProduct";
+import Register from "./Components/Register/Register";
+import Login from "./Components/Login/Login";
+import Navbar from "./Components/Navbar/Navbar";
+import Cart from "./Components/Cart/Cart";
+import { CartContextProvider } from "./Components/Context/CartContextProvider";
+import Footer from "./Components/Footer/Footer";
+import SingleCategory from "./Components/SingleCategory/SingleCategory";
+import Success from "./Components/Success/Success";
+import Cancel from "./Components/Cancel/Cancel";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // State variable to store authentication token
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
 
+  // Render Components
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <CartContextProvider>
+        <Navbar token={token} setToken={setToken} />
+        <Routes>
+          <Route path="/" element={<Products />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<SingleProduct />} />
+          <Route path="/register" element={<Register token={setToken} />} />
+          <Route
+            path="/login"
+            element={<Login setToken={setToken} token={token} />}
+          />
+          <Route
+            path="/cart"
+            element={<Cart token={token} setToken={setToken} />}
+          />
+          <Route path="/categories/:name" element={<SingleCategory />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/cancel" element={<Cancel />} />
+        </Routes>
+        <Footer />
+      </CartContextProvider>
+    </div>
+  );
 }
 
-export default App
+export default App;
