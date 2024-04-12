@@ -34,8 +34,7 @@ export default function Login() {
         setErrorMessage("Invalid email or password. Please try again.");
       }
     } catch (error) {
-      console.error("Error:", error);
-      setErrorMessage("An unexpected error occurred. Please try again later.");
+      setErrorMessage("Invalid email or password. Please try again later.");
     }
   };
 
