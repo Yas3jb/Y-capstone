@@ -4,7 +4,7 @@ import { fetchCheckout } from "../../API/index.js";
 
 export default function Checkout() {
   // Accessing cart items from the CartContext
-  const { cartItems } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   // State to track if checkout is in progress
   const [isProcessing, setIsProcessing] = useState(false);
@@ -15,8 +15,17 @@ export default function Checkout() {
       // Set isProcessing to true when checkout process starts
       setIsProcessing(true);
 
+      // Extracting product IDs and quantities from cart items
+      const items = cart.map((item) => ({
+        productId: item.product_id,
+        quantity: item.quantity,
+      }));
+
       // Call API to initiate checkout with cart items
-      await fetchCheckout(Object.keys(cartItems));
+      const response = await fetchCheckout(items);
+
+      // Redirecting user to the Stripe checkout page
+      window.location.href = response.url;
 
       // After successful checkout, set isProcessing back to false
       setIsProcessing(false);

@@ -51,7 +51,9 @@ export default function Products() {
 
   // Handle adding product to cart
   const handleAddToCart = (product) => {
-    addToCart(product);
+    const productId = product.id;
+    const quantity = 1;
+    addToCart(productId, quantity);
     const message = `${product.name} has been added to the cart!`;
     setNotification(message);
     // Clear notification after 3 seconds
@@ -91,7 +93,6 @@ export default function Products() {
             Sort {sortOrder === "asc" ? "A to Z" : "Z to A"}
           </button>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-8 gap-7">
           {products
             .slice(0, 10)

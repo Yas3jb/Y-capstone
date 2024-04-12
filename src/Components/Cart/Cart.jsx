@@ -1,39 +1,22 @@
-import { useState, useEffect, useContext } from "react";
-import { CartContext } from "../Context/CartContextProvider.jsx";
-import { FaRegTrashAlt } from "react-icons/fa";
-import Checkout from "../Checkout/Checkout.jsx";
+import { useContext } from "react";
+import { CartContext } from "../Context/CartContextProvider";
+import { FaRegTrashAlt, FaPlus, FaMinus } from "react-icons/fa";
+import Checkout from "../Checkout/Checkout";
 
-export default function Cart() {
-  // Accessing the cart state functions from the CartContext
-  const { cart, cartItems, removeFromCart, updateQuantity } =
-    useContext(CartContext);
-  // State variables
-  const [totalCost, setTotalCost] = useState(0);
+const Cart = () => {
+  // Accessing the cart state, removeFromCart, and updateQuantity functions from the CartContext
+  const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
 
-  // Calculate total cost whenever cart items or quantities change
-  useEffect(() => {
-    setTotalCost(
-      cart.reduce(
-        (acc, currentVal) =>
-          acc + Number(currentVal.price) * cartItems[currentVal.id],
-        0
-      )
-    );
-  }, [cartItems, cart]);
-
-  // Function to handle removing a product from the cart
-  const handleRemove = (product) => {
-    removeFromCart(product);
-  };
-
-  // Function to handle changing quantity of a product in the cart
-  const handleQuantityChange = (product, newQuantity) => {
-    updateQuantity(product, newQuantity);
-  };
+  // Calculate total amount
+  const totalAmount = cart
+    .reduce((total, item) => {
+      return total + item.price * item.quantity;
+    }, 0)
+    .toFixed(2);
 
   return (
     <div className="container mx-auto mt-20">
-      {cart.length ? (
+      {cart && cart.length ? (
         <div>
           <h1 className="text-2xl text-center font-bold mb-4 py-14">
             Items In Your Cart
@@ -44,67 +27,38 @@ export default function Cart() {
                 <th className="border-b border-gray-200 py-2">Product</th>
                 <th className="border-b border-gray-200 py-2">Price</th>
                 <th className="border-b border-gray-200 py-2">Quantity</th>
-                <th className="border-b border-gray-200 py-2">Total</th>
                 <th className="border-b border-gray-200 py-2">Action</th>
               </tr>
             </thead>
             <tbody>
-              {cart.map((product, i) => (
-                <tr key={i} className="border-b border-gray-200">
+              {cart.map((item) => (
+                <tr key={item.cart_id} className="border-b border-gray-200">
+                  <td className="py-4">{item.product}</td>
+                  <td className="py-4">${item.price}</td>
                   <td className="py-4">
-                    <div className="flex items-center">
-                      <div className="w-1/2 md:w-1/2 mx-2">
-                        <img
-                          src={product.imageurl}
-                          alt={product.name}
-                          className="w-full h-auto max-w-full"
-                        />
-                      </div>
-                      <div>
-                        <h3 className="text-sm mx-2 font-semibold mb-2">
-                          {product.name}
-                        </h3>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-4">${product.price}</td>
-                  <td className="py-4">
-                    <div className="flex items-center">
-                      <button
-                        className="bg-[#0a4abf] hover:bg-[#f6eb16] transition-all duration-300 text-white px-2 ml-4 mr-2 rounded"
-                        onClick={() =>
-                          handleQuantityChange(
-                            product,
-                            cartItems[product.id] - 1
-                          )
-                        }
-                      >
-                        -
-                      </button>
-                      <span>{cartItems[product.id]}</span>
-                      <button
-                        className="bg-[#0a4abf] hover:bg-[#f6eb16] transition-all duration-300 text-white px-2 ml-2 mr-4 rounded"
-                        onClick={() =>
-                          handleQuantityChange(
-                            product,
-                            cartItems[product.id] + 1
-                          )
-                        }
-                      >
-                        +
-                      </button>
-                    </div>
-                  </td>
-                  <td className="py-4">
-                    $
-                    {(
-                      Number(cartItems[product.id]) * Number(product.price)
-                    ).toFixed(2)}
+                    <button
+                      className=" m-2 text-lg"
+                      onClick={() =>
+                        updateQuantity(item.cart_id, item.quantity - 1)
+                      }
+                      disabled={item.quantity <= 1}
+                    >
+                      <FaMinus />
+                    </button>
+                    {item.quantity}
+                    <button
+                      className=" m-2 text-lg"
+                      onClick={() =>
+                        updateQuantity(item.cart_id, item.quantity + 1)
+                      }
+                    >
+                      <FaPlus />
+                    </button>
                   </td>
                   <td className="py-4">
                     <button
-                      className="text-red-500 m-4 text-lg"
-                      onClick={() => handleRemove(product)}
+                      className="text-red-500 m-2 text-lg"
+                      onClick={() => removeFromCart(item.cart_id)}
                     >
                       <FaRegTrashAlt />
                     </button>
@@ -113,8 +67,8 @@ export default function Cart() {
               ))}
             </tbody>
           </table>
-          <div className="text-lg font-semibold mt-4 mb-4">
-            Grand Total: ${totalCost.toFixed(2)}
+          <div className="text-right mt-4">
+            <p className="text-lg font-semibold">Total: ${totalAmount}</p>
           </div>
           <Checkout />
         </div>
@@ -128,4 +82,6 @@ export default function Cart() {
       )}
     </div>
   );
-}
+};
+
+export default Cart;

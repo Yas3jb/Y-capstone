@@ -104,17 +104,6 @@ export const fetchSingleCategory = async (name) => {
   }
 };
 
-// fetch cart
-export const fetchCart = async () => {
-  try {
-    const response = await axios.get(`${URL}/cart`);
-    console.log(response);
-    return response.data;
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 // Function to initiate checkout process
 export const fetchCheckout = async (cartItems) => {
   try {
@@ -122,14 +111,14 @@ export const fetchCheckout = async (cartItems) => {
     const response = await axios.post(
       `${URL}/checkout`,
       {
-        items: cartItems,
+        cartItems: cartItems,
       },
       {
         headers: { "Content-Type": "application/json" },
       }
     );
     // If the request is successful (status code 200)
-    //redirect the user to the checkout URL
+    // redirect the user to the checkout URL
     if (response.status === 200) {
       const { url } = response.data;
       window.location.href = url;
