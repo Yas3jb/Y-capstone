@@ -13,6 +13,7 @@ export default function Products() {
   const [sortOrder, setSortOrder] = useState("asc");
   const { addToCart } = useContext(CartContext);
   const [notification, setNotification] = useState("");
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   // Effect hook to fetch products
@@ -20,9 +21,11 @@ export default function Products() {
     fetchProducts()
       .then((products) => {
         setProducts(products);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
+        setLoading(false);
       });
   }, []);
 
@@ -64,6 +67,11 @@ export default function Products() {
 
   return (
     <>
+      {loading && (
+        <p className="flex justify-center text-center">
+          Loading Please Wait...
+        </p>
+      )}
       {notification && (
         <p className="bg-green-500 text-white px-4 py-2 fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-300">
           {notification}
