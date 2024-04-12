@@ -7,7 +7,7 @@ import Banner from "../Banner/Banner.jsx";
 import Categories from "../Categories/Categories.jsx";
 
 export default function Products() {
-  // State variables
+  // State variables.
   const [products, setProducts] = useState([]);
   const [sort, setSort] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
