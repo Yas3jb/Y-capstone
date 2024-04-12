@@ -5,7 +5,7 @@ import Checkout from "../Checkout/Checkout";
 
 const Cart = () => {
   // Accessing the cart state, removeFromCart, and updateQuantity functions from the CartContext
-  const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
+  const { cart, delItemsInCart, updateQuantity } = useContext(CartContext);
 
   // Calculate total amount
   const totalAmount = cart
@@ -58,7 +58,7 @@ const Cart = () => {
                   <td className="py-4">
                     <button
                       className="text-red-500 m-2 text-lg"
-                      onClick={() => removeFromCart(item.cart_id)}
+                      onClick={() => delItemsInCart(item.cart_id)}
                     >
                       <FaRegTrashAlt />
                     </button>

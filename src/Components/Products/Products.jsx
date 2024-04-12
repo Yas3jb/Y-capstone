@@ -7,12 +7,11 @@ import Banner from "../Banner/Banner.jsx";
 import Categories from "../Categories/Categories.jsx";
 
 export default function Products() {
-  // State variables.
+  // State variables
   const [products, setProducts] = useState([]);
   const [sort, setSort] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
-  const { addToCart } = useContext(CartContext);
-  const [notification, setNotification] = useState("");
+  const { addToCart, notification } = useContext(CartContext);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -57,12 +56,6 @@ export default function Products() {
     const productId = product.id;
     const quantity = 1;
     addToCart(productId, quantity);
-    const message = `${product.name} has been added to the cart!`;
-    setNotification(message);
-    // Clear notification after 3 seconds
-    setTimeout(() => {
-      setNotification("");
-    }, 3000);
   };
 
   return (
@@ -73,7 +66,7 @@ export default function Products() {
         </p>
       )}
       {notification && (
-        <p className="bg-green-500 text-white px-4 py-2 fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-300">
+        <p className="bg-yellow-300 text-black px-4 py-2 fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-300">
           {notification}
         </p>
       )}

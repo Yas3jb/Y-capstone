@@ -35,14 +35,11 @@ export const createUser = async (credentials) => {
 
     const { token } = response.data;
     window.localStorage.setItem("token", token);
-    console.log("User created successfully:", response.data);
   } catch (error) {
     if (error.response) {
       // Server responded with an error
-      console.error("Server error:", error.response.data);
       throw new Error("User already exists. Please login.");
     } else {
-      console.error("Error:", error.message);
       throw new Error("Error occurred. Please try again.");
     }
   }

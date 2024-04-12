@@ -8,12 +8,12 @@ const URL = "https://e-commerce-api-5fec.onrender.com/api";
 export const CartContext = createContext(null);
 
 export const CartContextProvider = (props) => {
-  // State to store the cart items
+  // State variables
   const [cart, setCart] = useState([]);
-  // State to store the total count of items in the cart
   const [cartCount, setCartCount] = useState(0);
+  const [notification, setNotification] = useState("");
 
-  // fetch cart data from the server
+  // fetch cart data
   const fetchCart = async (id) => {
     const token = window.localStorage.getItem("token");
     try {
@@ -27,11 +27,12 @@ export const CartContextProvider = (props) => {
       console.error(err);
     }
   };
-  // delete an item from the cart
-  const deleteCart = async (id) => {
+
+  // Remove an item from the cart
+  const delItemsInCart = async (cart_id) => {
     const token = window.localStorage.getItem("token");
     try {
-      await axios.delete(`${URL}/cart/${id}`, {
+      await axios.delete(`${URL}/cart/${cart_id}`, {
         headers: {
           Authorization: token,
         },
@@ -39,15 +40,6 @@ export const CartContextProvider = (props) => {
       const updatedCart = await fetchCart();
       setCart(updatedCart);
       updateCartCount(updatedCart);
-    } catch (error) {
-      console.error("Error removing item from cart:", error);
-    }
-  };
-
-  const removeFromCart = async (cart_id) => {
-    try {
-      // calling deleteCart function to remove item
-      await deleteCart(cart_id);
     } catch (error) {
       console.error("Error removing item from cart:", error);
     }
@@ -69,10 +61,30 @@ export const CartContextProvider = (props) => {
           },
         }
       );
-      const updatedCart = await fetchCart(productId, quantity);
+      // Fetch updated cart and update state
+      const updatedCart = await fetchCart();
       setCart(updatedCart);
+      updateCartCount(updatedCart);
+      // If successful, set notification
+      setNotification("Item successfully added to the cart");
+      // Clear notification after 3 seconds
+      setTimeout(() => {
+        setNotification("");
+      }, 3000);
     } catch (error) {
-      console.error("Error adding item to cart:", error);
+      // handle duplicate key error separately
+      if (
+        error.response &&
+        error.response.status === 500 &&
+        error.response.data ===
+          'duplicate key value violates unique constraint "unique_cart_entry"'
+      ) {
+        setNotification("Item is already in the cart");
+      } else {
+        setNotification(
+          "duplicate key value violates unique constraint. Item is already in the cart"
+        );
+      }
     }
   };
 
@@ -109,11 +121,12 @@ export const CartContextProvider = (props) => {
 
   const contextValue = {
     cart,
-    removeFromCart,
+    delItemsInCart,
     addToCart,
     resetCart,
     cartCount,
     updateQuantity,
+    notification,
   };
 
   return (
