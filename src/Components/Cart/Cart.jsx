@@ -33,11 +33,11 @@ const Cart = () => {
             <tbody>
               {cart.map((item) => (
                 <tr key={item.cart_id} className="border-b border-gray-200">
-                  <td className="py-4">{item.product}</td>
-                  <td className="py-4">${item.price}</td>
-                  <td className="py-4">
+                  <td className="py-4 ">{item.product}</td>
+                  <td className="py-4 text-center">${item.price}</td>
+                  <td className="py-4 text-center">
                     <button
-                      className=" m-2 text-lg"
+                      className=" m-2 text-md"
                       onClick={() =>
                         updateQuantity(item.cart_id, item.quantity - 1)
                       }
@@ -47,7 +47,7 @@ const Cart = () => {
                     </button>
                     {item.quantity}
                     <button
-                      className=" m-2 text-lg"
+                      className=" m-2 text-md"
                       onClick={() =>
                         updateQuantity(item.cart_id, item.quantity + 1)
                       }
@@ -55,7 +55,7 @@ const Cart = () => {
                       <FaPlus />
                     </button>
                   </td>
-                  <td className="py-4">
+                  <td className="py-4 text-center">
                     <button
                       className="text-red-500 m-2 text-lg"
                       onClick={() => delItemsInCart(item.cart_id)}

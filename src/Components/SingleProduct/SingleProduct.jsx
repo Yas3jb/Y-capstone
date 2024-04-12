@@ -7,8 +7,7 @@ export default function SingleProduct() {
   // State to store the product details
   const [product, setProduct] = useState([]);
   // Accessing addToCart function from CartContext
-  const { addToCart } = useContext(CartContext);
-  const [notification, setNotification] = useState("");
+  const { addToCart, notification } = useContext(CartContext);
   const { id } = useParams();
 
   // Fetch product details
@@ -24,18 +23,15 @@ export default function SingleProduct() {
 
   // Handle adding product to cart
   const handleAddToCart = (product) => {
-    addToCart(product);
-    const message = `${product.name} has been added to the cart!`;
-    setNotification(message);
-    setTimeout(() => {
-      setNotification();
-    }, 3000);
+    const productId = product.id;
+    const quantity = 1;
+    addToCart(productId, quantity);
   };
 
   return (
     <>
       {notification && (
-        <p className="bg-green-500 text-white px-4 py-2 fixed top-0 left-1/2 transform -translate-x-1/2 m-4 z-50">
+        <p className="bg-yellow-300 text-black px-4 py-2 fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-300">
           {notification}
         </p>
       )}
@@ -53,7 +49,6 @@ export default function SingleProduct() {
               <h1 className="text-[26px] font-medium mb-2 max-w-[450px] mx-auto lg:mx-0">
                 {product.name}
               </h1>
-
               <p className="mb-2"> {product.description}</p>
               <p className="mb-8"> {product.rating}</p>
               <div className="text-xl text-red-500 font-medium mb-6">
@@ -67,7 +62,6 @@ export default function SingleProduct() {
               </button>
             </div>
           </div>
-
           <div className="flex flex-col justify-center"></div>
         </div>
       </section>
