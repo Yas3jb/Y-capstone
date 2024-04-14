@@ -77,7 +77,7 @@ export default function Products() {
           View All Products
         </h2>
         {loading ? (
-          <p className="flex justify-center text-center mt-4">
+          <p className="flex justify-center text-center">
             Loading Please Wait...
           </p>
         ) : (
